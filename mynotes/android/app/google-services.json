@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "253171222845",
+    "project_id": "mynotes-xamsaying-app",
+    "storage_bucket": "mynotes-xamsaying-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253171222845:android:07c4c4250f75b10037dd54",
+        "android_client_info": {
+          "package_name": "com.whatever.mynotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZmtgRKCxVnYnS2xv7TgqB0QSQBrw27lc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
