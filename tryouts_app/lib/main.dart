@@ -85,11 +85,12 @@ class _MyAppInterfaceState extends State<MyAppInterface> {
                 ),  
                 title: Text('${_friends[index]}'), 
                 subtitle: Text('Hi William, My name is ${_friends[index]}'),
+               
                 onTap: () {         
                 },
                ),
                const Divider(),
-             ],
+             ]
            );  
          },
          itemCount: _friends.length,

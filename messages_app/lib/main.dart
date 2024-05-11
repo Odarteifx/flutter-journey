@@ -51,9 +51,10 @@ class MyAppInterface extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: (){
+            const TextField();
             print('add new message');
           },
-           backgroundColor: Colors.green[50],
+           backgroundColor: Colors.green[200],
            child: const Icon(
             Icons.message_sharp,
             size: 30,

@@ -29,13 +29,20 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-
+enum PopupJunction {whale, dog, cat, seafish}
 class _MyHomePageState extends State<MyHomePage> {
+  bool ischecked = false;
+  bool _bookMark = false; 
+  int? _value = 1;
+  PopupJunction? selectedItem = PopupJunction.whale;
+  DateTime? setDate = DateTime.now();
   bool passwordVisible = false;
   @override
   void initState() {
     super.initState();
     passwordVisible = true;
+    _bookMark = true;
+    ischecked = true;
   }
   @override
   Widget build(BuildContext context) {
@@ -52,8 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
             children: [
-
-
+              const SizedBox(height: 50,),
+              const FlutterLogo(size: 90,),
               const SizedBox(height: 50,),
               const Center(
                 child: SizedBox(
@@ -97,7 +104,54 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),   
                 ),
               ),
-            ],
+
+             const SizedBox(height: 0,),
+              
+             ElevatedButton(
+              
+              onPressed: () {
+             
+             },
+              child: const Text('Submit')),
+
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: List.generate(3, (index) {
+                    return ChoiceChip(
+                      label: Text('Item $index'),
+                      selectedColor:Colors.amber[200], 
+                      selected: _value == index,
+                      onSelected: (value) {
+                        if (_value != null) {
+                          setState(() {
+                            _value = index;
+                           
+                          });
+                        }
+                      },
+                      );
+                  })
+                ),
+              ),
+              ActionChip(
+                avatar: Icon(_bookMark ? Icons.bookmark_border : Icons.bookmark ),
+                label: const  Text('Bookmark'),
+                onPressed: () {
+                  setState(() {
+                    _bookMark = !_bookMark;
+                    if (_bookMark){
+                     print('Removed content from Bookmark');
+                    }else
+                    {
+                      print('Content Bookmarked');
+                    }
+                  });
+                },
+                ),
+                
+
+            ],         
           )
     );
   }
