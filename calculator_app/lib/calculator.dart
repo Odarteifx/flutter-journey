@@ -31,7 +31,7 @@ class _CalculatorUIState extends State<CalculatorUI> {
       expression = equation;
       expression = expression.replaceAll('×', '*');
       expression = expression.replaceAll('÷', '/');
-      expression = expression.replaceAll('%', '%');
+      expression = expression.replaceAll('%', '/100');
 
       try {
         Parser p = Parser();
