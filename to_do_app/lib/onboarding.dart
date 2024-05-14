@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/register.dart';
 
 class OnboardingWid extends StatefulWidget {
   const OnboardingWid({super.key});
@@ -23,8 +24,12 @@ class _OnboardingWidState extends State<OnboardingWid> {
             child:  Column(
               children: [
                 const Spacer(),
-                const Text('STAY ORGANIZED', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
-                const Text('Manage your tasks easily and effectively', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),),
+                const Text('STAY ORGANIZED', style: TextStyle(
+                  fontSize: 32, 
+                  fontWeight: FontWeight.bold,
+                  ),
+                  ),
+                const Text('Manage your tasks easily and effectively', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w100),),
                 const Spacer(),
                 SizedBox(
                   width: 359,
@@ -34,7 +39,10 @@ class _OnboardingWidState extends State<OnboardingWid> {
                         backgroundColor: const Color.fromRGBO(217, 217, 217, 1),
                       ),
                     onPressed: () {
-                      
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder:(context) => const RegPage(),)
+                      );
                     },
                      child: const Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
