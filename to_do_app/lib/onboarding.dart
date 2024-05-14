@@ -19,14 +19,35 @@ class _OnboardingWidState extends State<OnboardingWid> {
             fit: BoxFit.cover,
             )
           ),
-          child: const SafeArea(
+          child:  SafeArea(
             child:  Column(
               children: [
-                Spacer(),
-                Text('STAY ORGANIZED', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
-                Text('Manage your tasks easily and effectively', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),),
-                Spacer(),
-                
+                const Spacer(),
+                const Text('STAY ORGANIZED', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
+                const Text('Manage your tasks easily and effectively', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),),
+                const Spacer(),
+                SizedBox(
+                  width: 359,
+                  height: 60,
+                  child: ElevatedButton(
+                    style:  ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromRGBO(217, 217, 217, 1),
+                      ),
+                    onPressed: () {
+                      
+                    },
+                     child: const Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                        Spacer(),
+                         Text('Get Started', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),),
+                         Spacer(),
+                         Text('>', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.black),),
+                       ],
+                     )
+                     ),
+                )
               ],
             ),
           ),
