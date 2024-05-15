@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/to_do.dart';
 
 class RegPage extends StatefulWidget {
   const RegPage({super.key});
@@ -113,7 +114,7 @@ class _ToDoUIState extends State<RegPage> {
                    backgroundColor: Colors.black,
                   ),
                   onPressed:() {
-                    
+                    Navigator.push(context, MaterialPageRoute(builder:(context) => const MyToDoInterface(),));
                   }, 
                   child: const Row(
                    mainAxisAlignment: MainAxisAlignment.center,
