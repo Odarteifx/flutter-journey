@@ -21,42 +21,63 @@ class _OnboardingWidState extends State<OnboardingWid> {
             )
           ),
           child:  SafeArea(
-            child:  Column(
-              children: [
-                const Spacer(),
-                const Text('STAY ORGANIZED', style: TextStyle(
-                  fontSize: 32, 
-                  fontWeight: FontWeight.bold,
-                  ),
-                  ),
-                const Text('Manage your tasks easily and effectively', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w100),),
-                const Spacer(),
-                SizedBox(
-                  width: 359,
-                  height: 60,
-                  child: ElevatedButton(
-                    style:  ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromRGBO(217, 217, 217, 1),
+            child:  Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  const Spacer(),
+                  
+                  const Column(
+                     children: [
+                      Text('STAY ORGANIZED', 
+                     style: TextStyle(
+                    fontSize: 32, 
+                    fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                   Text(
+                    'Manage your tasks easily and effectively', 
+                    style: TextStyle(
+                      fontSize: 15, 
+                      fontWeight: FontWeight.w100
                       ),
-                    onPressed: () {
-                      Navigator.push(
-                        context, 
-                        MaterialPageRoute(builder:(context) => const RegPage(),)
-                      );
-                    },
-                     child: const Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                       children: [
-                        Spacer(),
-                         Text('Get Started', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),),
-                         Spacer(),
-                         Text('>', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.black),),
-                       ],
-                     )
-                     ),
-                )
-              ],
+                      ),
+                     ],
+                  ),
+              
+                  const Spacer(),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(217, 217, 217, 1),
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      style:  ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromRGBO(217, 217, 217, 1),
+                          shadowColor: Colors.transparent,
+                        ),
+                      onPressed: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(builder:(context) => const RegPage(),)
+                        );
+                      },
+                       child: const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                         children: [
+                          Spacer(),
+                           Text('Get Started', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.black),),
+                           Spacer(),
+                           Text('>', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.black),),
+                         ],
+                       )
+                       ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
