@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 
 class MyToDoInterface extends StatefulWidget {
@@ -160,12 +161,12 @@ Widget taskScrollBtns(
   );
 }
 
-Widget taskSection(String task ){
+Widget taskSection(String task,){
   return Container( 
     width: double.infinity,
     height: 170,
     decoration: BoxDecoration(
-      color: Colors.amber,
+      color: const Color.fromRGBO(255, 246, 227, 1),
       borderRadius: BorderRadius.circular(30),
     ),
     child: Padding(
@@ -183,7 +184,6 @@ Widget taskSection(String task ){
                   fontWeight: FontWeight.bold,
                 ),
                 ),
-      
                 Container(
                   width: 60,
                   height: 60,
@@ -191,8 +191,45 @@ Widget taskSection(String task ){
                     borderRadius: BorderRadius.circular(30),
                     color: Colors.black,
                   ),
+                  child: const Icon(
+                    Iconsax.arrow_right_1,
+                    color: Colors.white,
+                    ),
+                ),
+            ],
+          ),
+
+         const SizedBox( height: 24,),
+
+           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Container(
+                width: 100,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: const Color(0xFFEEEEEE),
+                ),
+                child: const Center(
+                  child: Text(
+                    '15th May',
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                    )
+                    ),
+              ),
+              
+              const Text(
+                'Completed',
+                style: TextStyle(
+                  color: Color(0xFF219653)
+                ),
                 )
             ],
+            
           )
       ]
       ),
