@@ -113,6 +113,16 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                 ],
               ),
             ),
+            const SizedBox(height: 22,),
+
+           Padding(
+             padding: const EdgeInsets.symmetric(horizontal: 20),
+             child: Column(
+              children: [
+                taskSection('Develop A flutter project')
+              ],
+             ),
+           )
           ],
         ),
       ),
@@ -150,3 +160,43 @@ Widget taskScrollBtns(
   );
 }
 
+Widget taskSection(String task ){
+  return Container( 
+    width: double.infinity,
+    height: 170,
+    decoration: BoxDecoration(
+      color: Colors.amber,
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal:18),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                task,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+      
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.black,
+                  ),
+                )
+            ],
+          )
+      ]
+      ),
+    ),
+    );
+
+}
