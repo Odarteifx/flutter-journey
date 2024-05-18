@@ -140,7 +140,7 @@ Widget taskScrollBtns(
           child: Text(
             day,
             style:  TextStyle(
-              fontSize: 15,
+              fontSize: isSelected? 18 : 15,
               color: isSelected? Colors.white : null,
             ),
             )
