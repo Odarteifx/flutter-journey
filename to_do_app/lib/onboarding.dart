@@ -23,7 +23,7 @@ class _OnboardingWidState extends State<OnboardingWid> {
           ),
           child:  SafeArea(
             child:  Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: Column(
                 children: [
                   const Spacer(),
