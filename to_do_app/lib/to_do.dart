@@ -18,6 +18,7 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
     selectedDate = day;
   });
 }
+ int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -40,7 +41,12 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: NavigationBar( 
-            selectedIndex: 0,
+            selectedIndex: currentPageIndex,
+            onDestinationSelected: (value) {
+              setState(() {
+                currentPageIndex = value;
+              });
+            },
            backgroundColor: Colors.black,
             indicatorShape:const CircleBorder(),
             indicatorColor: Colors.white,
@@ -54,7 +60,7 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                 selectedIcon: Icon(
                   Iconsax.home_2,
                   color: Colors.black,
-                  size: 26,
+                  size: 25,
                 ),
                 label: 'Home'
               ),
@@ -67,7 +73,7 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                 selectedIcon: Icon(
                   Iconsax.calendar_1,
                   color: Colors.black,
-                  size: 26,
+                  size: 25,
                 ),
                 label: 'Calender'
                 ),
@@ -79,7 +85,7 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                 selectedIcon: Icon(
                   Iconsax.chart_1,
                   color: Colors.black,
-                  size: 26,
+                  size: 25,
                 ),
                 label: 'Insights'
                 ),
@@ -91,7 +97,7 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                 selectedIcon: Icon(
                   Iconsax.user,
                   color: Colors.black,
-                  size: 26,
+                  size: 25,
                 ),
                 label: 'Profile'
                 ),
@@ -242,7 +248,6 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                         decoration: InputDecoration(
                           hintText: 'Enter Your Task',
                           border: OutlineInputBorder(
-                            
                           ),
                         ),
                       )
