@@ -126,24 +126,24 @@ class _ToDoUIState extends State<RegPage> {
                   onPressed:() {
                     Navigator.push(context, MaterialPageRoute(builder:(context) => const MyToDoInterface(),));
                   }, 
-                  child: const Row(
+                  child: Row(
                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Spacer(),
+                      const Spacer(),
                        Text(
-                        'Continude',
-                        style: TextStyle(
+                        'Continue',
+                        style: GoogleFonts.poppins(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w700,
                           fontSize: 20,
                         ),
                         ),
-                       Spacer(),
+                       const Spacer(),
                        Text(
                         '>',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w700,
                           fontSize: 20,
                         ),
                         ),
