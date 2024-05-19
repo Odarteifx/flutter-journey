@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:to_do_app/to_do.dart';
 
 class RegPage extends StatefulWidget {
@@ -17,21 +18,22 @@ class _ToDoUIState extends State<RegPage> {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child:  Column(
             children: [
-             const Center(
+             Center(
                 child: Column(
                   children: [
                     Text(
                       'Welcome!', 
-                      style: TextStyle(
-                        fontSize: 22,
+                      style: GoogleFonts.poppins(
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                       ),
-                      SizedBox( height: 2,),
+                      const SizedBox( height: 2,),
                       Text(
                         "Let's get to know you",
-                        style: TextStyle(
-                         fontSize: 15, 
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w300,
+                         fontSize: 20, 
                         ),
                         ),
                   ],
@@ -43,11 +45,12 @@ class _ToDoUIState extends State<RegPage> {
                   Column(  
                     crossAxisAlignment: CrossAxisAlignment.start, 
                     children: [
-                      const Text(
+                       Text(
                         'Firstname',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
                         ),
                       ),
                       const SizedBox(height: 5,),
@@ -61,11 +64,13 @@ class _ToDoUIState extends State<RegPage> {
                         ),
                       ),
                       const SizedBox(height: 20,),
-                      const Text(
+
+                       Text(
                         'Lastname',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
                         ),
                       ),
                       const SizedBox(height: 5,),
@@ -78,19 +83,24 @@ class _ToDoUIState extends State<RegPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20,),
-                      const Text(
+                      
+                      const SizedBox(height: 20),
+
+                      Text(
                         'Username',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16
                         ),
                       ),
                       const SizedBox(height: 5,),
                       TextField(
                         decoration: InputDecoration(
                           hintText: 'Odartei',
-                          hintStyle: const TextStyle(color: Colors.grey),
+                          hintStyle: const TextStyle(
+                            color: Colors.grey
+                            ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),

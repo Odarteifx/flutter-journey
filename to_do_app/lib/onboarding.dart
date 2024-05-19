@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:to_do_app/register.dart';
 
 class OnboardingWid extends StatefulWidget {
@@ -27,19 +28,19 @@ class _OnboardingWidState extends State<OnboardingWid> {
                 children: [
                   const Spacer(),
                   
-                  const Column(
+                   Column(
                      children: [
                       Text('STAY ORGANIZED', 
-                     style: TextStyle(
-                    fontSize: 32, 
-                    fontWeight: FontWeight.bold,
+                     style: GoogleFonts.poppins(
+                    fontSize: 35, 
+                    fontWeight: FontWeight.w800,
                     ),
                     ),
-                   Text(
+                    Text(
                     'Manage your tasks easily and effectively', 
-                    style: TextStyle(
-                      fontSize: 15, 
-                      fontWeight: FontWeight.w100
+                    style: GoogleFonts.poppins(
+                      fontSize: 18, 
+                      fontWeight: FontWeight.w300
                       ),
                       ),
                      ],
@@ -64,14 +65,28 @@ class _OnboardingWidState extends State<OnboardingWid> {
                           MaterialPageRoute(builder:(context) => const RegPage(),)
                         );
                       },
-                       child: const Row(
+                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                          children: [
-                          Spacer(),
-                           Text('Get Started', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.black),),
-                           Spacer(),
-                           Text('>', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.black),),
+                          const Spacer(),
+                           Text(
+                            'Get Started', 
+                           style: GoogleFonts.poppins(
+                            fontSize: 22, 
+                            fontWeight: FontWeight.w700, 
+                            color: Colors.black
+                            ),
+                            ),
+                           const Spacer(),
+                           Text(
+                            '>', 
+                            style: GoogleFonts.poppins(
+                              fontSize: 21, 
+                              fontWeight: FontWeight.w700, 
+                              color: Colors.black
+                              ),
+                              ),
                          ],
                        )
                        ),

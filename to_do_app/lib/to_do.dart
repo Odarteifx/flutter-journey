@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
 class MyToDoInterface extends StatefulWidget {
@@ -26,105 +26,110 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
          BottomNavigationBarItem(icon: Icon(Iconsax.tick_circle), label: ''),
       ]),
       body:  SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                   const CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Colors.grey,
-                    child: Text(
-                      'O',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold
+        child: Padding(
+          padding: const EdgeInsets.only(top: 15),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                     const CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.grey,
+                      child: Text(
+                        'O',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold
+                        ),
+                        ),
+                    ),
+                      Text(
+                      'Hi Odartei',
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
                       ),
                       ),
-                  ),
-                   const Text(
-                    'Hi Odartei',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                    ),
-                    ),
-                  Container(
-                    decoration: BoxDecoration(
-                       color: Colors.grey,
-                      borderRadius: BorderRadius.circular(100),
-                      
-                      
-                    ),
-                   
-                    width: 60,
-                    height: 60,
-                     child: const Center(
-                       child:  Badge(
-                        child: Icon(
-                          Iconsax.notification
-                          )
-                          ),
-                     ),
-                   )
-                ],
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(
+                          color: const Color(0xFF4F4F4F),
+                        )
+                        
+                      ),
+                     
+                      width: 60,
+                      height: 60,
+                       child: const Center(
+                         child:  Badge(
+                          child: Icon(
+                            Iconsax.notification
+                            )
+                            ),
+                       ),
+                     )
+                  ],
+                ),
               ),
-            ),
-        
-            const SizedBox(height: 26,),
-        
-           const Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          
+              const SizedBox(height: 26,),
+          
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'My Tasks',
+                      style: GoogleFonts.poppins(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                        
+                    Text(
+                      'See All',
+                      style: GoogleFonts.poppins(
+                        fontSize: 20,
+                        fontWeight: FontWeight.normal,
+                        color: const Color(0xFFC5C5C5),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+          
+              const SizedBox(height: 26),
+          
+               SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 15,),
+                    taskScrollBtns('All', buttonPressed , selectedDate),
+                    taskScrollBtns('Today', buttonPressed, selectedDate),
+                    taskScrollBtns('16th May', buttonPressed, selectedDate),
+                    taskScrollBtns('17th May', buttonPressed, selectedDate),
+                    taskScrollBtns('18th May', buttonPressed, selectedDate),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 22,),
+          
+             Padding(
+               padding: const EdgeInsets.symmetric(horizontal: 20),
+               child: Column(
                 children: [
-                  Text(
-                    'My Tasks',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                      
-                  Text(
-                    'See All',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.grey,
-                    ),
-                  )
+                  taskSection('Develop A flutter project')
                 ],
-              ),
-            ),
-        
-            const SizedBox(height: 26),
-        
-             SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  const SizedBox(width: 15,),
-                  taskScrollBtns('All', buttonPressed , selectedDate),
-                  taskScrollBtns('Today', buttonPressed, selectedDate),
-                  taskScrollBtns('16th May', buttonPressed, selectedDate),
-                  taskScrollBtns('17th May', buttonPressed, selectedDate),
-                  taskScrollBtns('18th May', buttonPressed, selectedDate),
-                ],
-              ),
-            ),
-            const SizedBox(height: 22,),
-
-           Padding(
-             padding: const EdgeInsets.symmetric(horizontal: 20),
-             child: Column(
-              children: [
-                taskSection('Develop A flutter project')
-              ],
-             ),
-           )
-          ],
+               ),
+             )
+            ],
+          ),
         ),
       ),
     );
@@ -145,12 +150,13 @@ Widget taskScrollBtns(
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          color: isSelected? Colors.black : const Color.fromRGBO(238, 238, 238, 1),
+          color: isSelected? Colors.black : const Color(0xFFEEEEEE),
         ),
         child: Center(
           child: Text(
             day,
-            style:  TextStyle(
+            style:  GoogleFonts.poppins(
+              fontWeight: FontWeight.w500,
               fontSize: isSelected? 18 : 15,
               color: isSelected? Colors.white : null,
             ),
@@ -166,7 +172,7 @@ Widget taskSection(String task,){
     width: double.infinity,
     height: 170,
     decoration: BoxDecoration(
-      color: const Color.fromRGBO(255, 246, 227, 1),
+      color: const Color(0xFFFFF6E3),
       borderRadius: BorderRadius.circular(30),
     ),
     child: Padding(
@@ -209,23 +215,29 @@ Widget taskSection(String task,){
                 width: 100,
                 height: 40,
                 decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color(0xFF4F4F4F),
+                  ),
                   borderRadius: BorderRadius.circular(50),
-                  color: const Color(0xFFEEEEEE),
+                  
                 ),
-                child: const Center(
+                child:  Center(
                   child: Text(
                     '15th May',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w500,
                       fontSize: 15,
                     ),
                     )
                     ),
               ),
               
-              const Text(
+               Text(
                 'Completed',
-                style: TextStyle(
-                  color: Color(0xFF219653)
+                style: GoogleFonts.poppins(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: const Color(0xFF219653)
                 ),
                 )
             ],
