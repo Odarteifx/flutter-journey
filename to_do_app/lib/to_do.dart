@@ -21,15 +21,82 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 25),
-        child: NavigationBar(
-          destinations: const [
-           NavigationDestination(icon: Icon(Iconsax.home_2), label: ''),
-          NavigationDestination(icon: Icon(Iconsax.calendar_1), label: ''),
-          NavigationDestination(icon: Icon(Iconsax.chart_1), label: ''),
-          NavigationDestination(icon: Icon(Iconsax.user), label: ''),
-        ]),
+      extendBody: true,
+      bottomNavigationBar: Container(
+        height: 60,
+        margin: const EdgeInsets.symmetric(horizontal: 85, vertical: 5),
+        decoration: BoxDecoration(
+          color: Colors.amber,
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: const[
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0, 20),
+              blurRadius: 30,
+            )
+          ]
+        ),
+
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(30),
+          child: NavigationBar( 
+            selectedIndex: 0,
+           backgroundColor: Colors.black,
+            indicatorShape:const CircleBorder(),
+            indicatorColor: Colors.white,
+            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+            destinations: const [
+             NavigationDestination(
+              icon: Icon(
+                Iconsax.home_2,
+                color: Colors.white,
+                ), 
+                selectedIcon: Icon(
+                  Iconsax.home_2,
+                  color: Colors.black,
+                  size: 26,
+                ),
+                label: 'Home'
+              ),
+
+            NavigationDestination(
+              icon: Icon(
+                Iconsax.calendar_1,
+                color: Colors.white,
+                ), 
+                selectedIcon: Icon(
+                  Iconsax.calendar_1,
+                  color: Colors.black,
+                  size: 26,
+                ),
+                label: 'Calender'
+                ),
+            NavigationDestination(
+              icon: Icon(
+                Iconsax.chart_1,
+                 color: Colors.white,
+                ),
+                selectedIcon: Icon(
+                  Iconsax.chart_1,
+                  color: Colors.black,
+                  size: 26,
+                ),
+                label: 'Insights'
+                ),
+            NavigationDestination(
+              icon: Icon(
+                Iconsax.user,
+                color: Colors.white,
+                ),
+                selectedIcon: Icon(
+                  Iconsax.user,
+                  color: Colors.black,
+                  size: 26,
+                ),
+                label: 'Profile'
+                ),
+          ]),
+        ),
       ),
 
       body:  SingleChildScrollView(
@@ -154,7 +221,37 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
             ),
         ),
         onPressed: (){
-
+          showModalBottomSheet(
+            context: context,
+             builder: (context) {
+               return SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Add A New Task',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Enter Your Task',
+                          border: OutlineInputBorder(
+                            
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+               );
+             },
+             );
         }
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
@@ -267,7 +364,7 @@ Widget taskSection(String task, Color taskColor, bool taskStatus,){
                   style: GoogleFonts.poppins(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
-                    color: taskStatus? const Color(0xFF219653) : const Color.fromRGBO(235, 87, 87, 1),
+                    color: taskStatus? const Color(0xFF219653) : const Color(0xFFEB5757),
                   ),
                   )
               ],
