@@ -21,14 +21,21 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      bottomNavigationBar: BottomNavigationBar(items: const [
-         BottomNavigationBarItem(icon: Icon(Iconsax.home), label: ''),
-         BottomNavigationBarItem(icon: Icon(Iconsax.tick_circle), label: ''),
-      ]),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 25),
+        child: NavigationBar(
+          destinations: const [
+           NavigationDestination(icon: Icon(Iconsax.home_2), label: ''),
+          NavigationDestination(icon: Icon(Iconsax.calendar_1), label: ''),
+          NavigationDestination(icon: Icon(Iconsax.chart_1), label: ''),
+          NavigationDestination(icon: Icon(Iconsax.user), label: ''),
+        ]),
+      ),
+
       body:  SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15),
+            padding: const EdgeInsets.only(top: 15,),
             child: Column(
               children: [
                 Padding(
@@ -125,10 +132,10 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                  padding: const EdgeInsets.symmetric(horizontal: 20),
                  child: Column(
                   children: [
-                    taskSection('Develop A flutter project'),
-                    taskSection('Develop A flutter project'),
-                    taskSection('Develop A flutter project'),
-                     taskSection('Develop A flutter project'),
+                    taskSection('Develop A flutter project with flutter',const Color(0xFFFFF6E3), true),
+                    taskSection('Design Ui For A Movie Application',const Color(0xFFE4E2DC), false),
+                    taskSection('Zoom Meeting With Supervisor',const Color(0xFFD0D0B6), false),
+                     taskSection('Develop A flutter project',const Color(0xFFFFD7C7), false),
                   ],
                  ),
                )
@@ -137,6 +144,20 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
+        backgroundColor: Colors.black,
+        child: const Center(
+          child: Icon(
+            Iconsax.add_square,
+            color: Colors.white,
+            ),
+        ),
+        onPressed: (){
+
+        }
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
     );
   }
 }
@@ -172,14 +193,14 @@ Widget taskScrollBtns(
   );
 }
 
-Widget taskSection(String task,){
+Widget taskSection(String task, Color taskColor, bool taskStatus,){
   return Padding(
     padding: const EdgeInsets.only(bottom: 11),
     child: Container( 
       width: double.infinity,
       height: 170,
       decoration: BoxDecoration(
-        color: const Color(0xFFFFF6E3),
+        color: taskColor,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Padding(
@@ -190,13 +211,15 @@ Widget taskSection(String task,){
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  task,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  ),
+                Expanded(
+                  child: Text(
+                    task,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                ),
                   Container(
                     width: 60,
                     height: 60,
@@ -240,11 +263,11 @@ Widget taskSection(String task,){
                 ),
                 
                  Text(
-                  'Completed',
+                  taskStatus? 'Completed' : 'Not Completed',
                   style: GoogleFonts.poppins(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
-                    color: const Color(0xFF219653)
+                    color: taskStatus? const Color(0xFF219653) : const Color.fromRGBO(235, 87, 87, 1),
                   ),
                   )
               ],
