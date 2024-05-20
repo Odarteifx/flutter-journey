@@ -24,88 +24,6 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
   Widget build(BuildContext context) {
     return  Scaffold(
       extendBody: true,
-      bottomNavigationBar: Container(
-        height: 60,
-        margin: const EdgeInsets.symmetric(horizontal: 85, vertical: 5),
-        decoration: BoxDecoration(
-          color: Colors.amber,
-          borderRadius: BorderRadius.circular(30),
-          boxShadow: const[
-            BoxShadow(
-              color: Colors.black,
-              offset: Offset(0, 20),
-              blurRadius: 30,
-            )
-          ]
-        ),
-
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: NavigationBar( 
-            selectedIndex: currentPageIndex,
-            onDestinationSelected: (value) {
-              setState(() {
-                currentPageIndex = value;
-              });
-            },
-           backgroundColor: Colors.black,
-            indicatorShape:const CircleBorder(),
-            indicatorColor: Colors.white,
-            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-            destinations: const [
-             NavigationDestination(
-              icon: Icon(
-                Iconsax.home_2,
-                color: Colors.white,
-                ), 
-                selectedIcon: Icon(
-                  Iconsax.home_2,
-                  color: Colors.black,
-                  size: 25,
-                ),
-                label: 'Home'
-              ),
-
-            NavigationDestination(
-              icon: Icon(
-                Iconsax.calendar_1,
-                color: Colors.white,
-                ), 
-                selectedIcon: Icon(
-                  Iconsax.calendar_1,
-                  color: Colors.black,
-                  size: 25,
-                ),
-                label: 'Calender'
-                ),
-            NavigationDestination(
-              icon: Icon(
-                Iconsax.chart_1,
-                 color: Colors.white,
-                ),
-                selectedIcon: Icon(
-                  Iconsax.chart_1,
-                  color: Colors.black,
-                  size: 25,
-                ),
-                label: 'Insights'
-                ),
-            NavigationDestination(
-              icon: Icon(
-                Iconsax.user,
-                color: Colors.white,
-                ),
-                selectedIcon: Icon(
-                  Iconsax.user,
-                  color: Colors.black,
-                  size: 25,
-                ),
-                label: 'Profile'
-                ),
-          ]),
-        ),
-      ),
-
       body:  SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -218,27 +136,31 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        shape: const CircleBorder(),
+      floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Colors.black,
-        child: const Center(
-          child: Icon(
-            Iconsax.add_square,
+        onPressed:() {
+         Navigator.push(
+          context, 
+          MaterialPageRoute(
+            builder: (context) {
+               return const Taskaddpage();
+            },
+            )
+         );
+        }, 
+        icon: const Icon(
+          Iconsax.add_square,
+          color: Colors.white,
+          ),
+        label: const Text(
+          'Add Task',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
             color: Colors.white,
-            ),
+          ),
+          ),
         ),
-        onPressed: (){
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return const Taskaddpage();
-              },
-              )
-          );
-        }
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
+        // floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
     );
   }
 }
