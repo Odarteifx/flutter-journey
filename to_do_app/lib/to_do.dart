@@ -336,8 +336,9 @@ Widget taskSection(String task, Color taskColor, bool taskStatus,){
                     child: Text(
                       '15th May',
                       style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15,
+                        color:  const Color(0xFF4F4F4F),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
                       ),
                       )
                       ),
