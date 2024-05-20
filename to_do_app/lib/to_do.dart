@@ -264,7 +264,7 @@ Widget taskScrollBtns(
             day,
             style:  GoogleFonts.poppins(
               fontWeight: FontWeight.w500,
-              fontSize: isSelected? 18 : 15,
+              fontSize: isSelected? 16 : 15,
               color: isSelected? Colors.white : null,
             ),
             )
