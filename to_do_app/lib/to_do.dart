@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:to_do_app/add_add_page.dart';
 
 class MyToDoInterface extends StatefulWidget {
   const MyToDoInterface({super.key});
@@ -116,10 +117,10 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       const CircleAvatar(
+                        CircleAvatar(
                         radius: 30,
-                        backgroundColor: Colors.grey,
-                        child: Text(
+                        backgroundColor: Colors.lime[200],
+                        child: const Text(
                           'O',
                           style: TextStyle(
                             fontSize: 30,
@@ -227,36 +228,14 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
             ),
         ),
         onPressed: (){
-          showModalBottomSheet(
-            context: context,
-             builder: (context) {
-               return SizedBox(
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Add A New Task',
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        ),
-                      const TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Enter Your Task',
-                          border: OutlineInputBorder(
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-               );
-             },
-             );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return const Taskaddpage();
+              },
+              )
+          );
         }
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
@@ -318,7 +297,7 @@ Widget taskSection(String task, Color taskColor, bool taskStatus,){
                     task,
                     style: const TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                     ),
                     ),
                 ),
