@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:to_do_app/add_add_page.dart';
+import 'package:to_do_app/add_task_alert.dart';
+
 
 class MyToDoInterface extends StatefulWidget {
   const MyToDoInterface({super.key, required this.firstName, required this.lastName, required this.userName });
@@ -16,10 +17,10 @@ final String userName;
 }
 
 List toDoList = [
-  ['Develop A flutter project with flutter',const Color(0xFFFFF6E3), true],
-  ['Design Ui For A Movie Application',const Color(0xFFE4E2DC), false],
-  ['Zoom Meeting With Supervisor',const Color(0xFFD0D0B6), false],
-  ['Develop A flutter project',const Color(0xFFFFD7C7), false],
+  ['Develop A flutter project with flutter',DateTime(2024,02,02),const Color(0xFFFFF6E3), true],
+  ['Design Ui For A Movie Application',DateTime(2024,02,02),const Color(0xFFE4E2DC), false],
+  ['Zoom Meeting With Supervisor',DateTime(2024,02,02),const Color(0xFFD0D0B6), false],
+  ['Develop A flutter project',DateTime(2024,02,02),const Color(0xFFFFD7C7), false],
 ];
 
 class _MyToDoInterfaceState extends State<MyToDoInterface> {
@@ -32,6 +33,18 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
   });
 }
  int currentPageIndex = 0;
+
+void createNewTask(){
+  showDialog(
+    context: context,
+     builder: (context) {
+       return Taskaddpage(
+       
+       );
+     },
+     );
+}
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -50,9 +63,9 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                         CircleAvatar(
                         radius: 30,
                         backgroundColor: Colors.lime[200],
-                        child: const Text(
-                          'O',
-                          style: TextStyle(
+                        child: Text(
+                          widget.userName.toString()[0],
+                          style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold
                           ),
@@ -145,6 +158,7 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                         toDoList[index][0], 
                         toDoList[index][1],
                         toDoList[index][2],
+                        toDoList[index][3],
                         );
                     },
                     itemCount: toDoList.length,
@@ -159,16 +173,7 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Colors.black,
-        onPressed:() {
-         Navigator.push(
-          context, 
-          MaterialPageRoute(
-            builder: (context) {
-               return const Taskaddpage();
-            },
-            )
-         );
-        }, 
+        onPressed: createNewTask, 
         icon: const Icon(
           Iconsax.add_square,
           color: Colors.white,
@@ -217,7 +222,7 @@ Widget taskScrollBtns(
   );
 }
 
-Widget taskSection(String task, Color taskColor, bool taskStatus,){
+Widget taskSection(String task, DateTime taskDate ,Color taskColor, bool taskStatus,){
   return Padding(
     padding: const EdgeInsets.only(bottom: 15),
     child: Container( 
