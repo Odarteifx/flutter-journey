@@ -5,9 +5,15 @@ import 'package:to_do_app/to_do.dart';
 class RegPage extends StatefulWidget {
   const RegPage({super.key});
 
+
+
   @override
   State<RegPage> createState() => _ToDoUIState();
 }
+
+final firstNameController = TextEditingController();
+final lastNameController = TextEditingController();
+final userNameController = TextEditingController();
 
 class _ToDoUIState extends State<RegPage> {
   @override
@@ -54,7 +60,8 @@ class _ToDoUIState extends State<RegPage> {
                         ),
                       ),
                       const SizedBox(height: 5,),
-                      TextField(
+                      TextFormField(
+                        controller: firstNameController,
                         decoration: InputDecoration(
                           hintText: 'William',
                           hintStyle: const TextStyle(color: Colors.grey),
@@ -74,7 +81,8 @@ class _ToDoUIState extends State<RegPage> {
                         ),
                       ),
                       const SizedBox(height: 5,),
-                      TextField(
+                      TextFormField(
+                        controller: lastNameController,
                         decoration: InputDecoration(
                           hintText: 'Lamptey',
                           hintStyle: const TextStyle(color: Colors.grey),
@@ -95,7 +103,8 @@ class _ToDoUIState extends State<RegPage> {
                         ),
                       ),
                       const SizedBox(height: 5,),
-                      TextField(
+                      TextFormField(
+                        controller: userNameController,
                         decoration: InputDecoration(
                           hintText: 'Odartei',
                           hintStyle: const TextStyle(
@@ -110,7 +119,7 @@ class _ToDoUIState extends State<RegPage> {
                   )
                 ],
               ),
-              const Spacer(),
+              const Spacer(),         
               Container(
                 
                 decoration: BoxDecoration(
@@ -124,7 +133,10 @@ class _ToDoUIState extends State<RegPage> {
                    backgroundColor: Colors.black,
                   ),
                   onPressed:() {
-                    Navigator.push(context, MaterialPageRoute(builder:(context) => const MyToDoInterface(),));
+                    Navigator.push(context, MaterialPageRoute(builder:(context) {
+                      return MyToDoInterface(firstName: firstNameController.text, lastName: lastNameController.text, userName: userNameController.text,);
+                  }
+                  ));
                   }, 
                   child: Row(
                    mainAxisAlignment: MainAxisAlignment.center,

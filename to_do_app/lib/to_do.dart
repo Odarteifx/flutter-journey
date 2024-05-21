@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:to_do_app/add_add_page.dart';
+import 'package:to_do_app/register.dart';
 
 class MyToDoInterface extends StatefulWidget {
-  const MyToDoInterface({super.key});
+  const MyToDoInterface({super.key, required this.firstName, required this.lastName, required this.userName });
+
+final String firstName;
+final String lastName;
+final String userName;
 
   @override
   State<MyToDoInterface> createState() => _MyToDoInterfaceState();
@@ -47,7 +52,7 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                           ),
                       ),
                         Text(
-                        'Hi Odartei',
+                        'Hi, ${userNameController.text}',
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
