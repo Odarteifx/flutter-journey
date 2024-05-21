@@ -10,13 +10,14 @@ class RegPage extends StatefulWidget {
   @override
   State<RegPage> createState() => _ToDoUIState();
 }
-
 final firstNameController = TextEditingController();
 final lastNameController = TextEditingController();
 final userNameController = TextEditingController();
-
+   
 class _ToDoUIState extends State<RegPage> {
+   
   @override
+
   Widget build(BuildContext context) {
     return  Scaffold(
       body: SafeArea(
