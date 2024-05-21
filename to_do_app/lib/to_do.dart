@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:to_do_app/add_add_page.dart';
 
-
 class MyToDoInterface extends StatefulWidget {
   const MyToDoInterface({super.key, required this.firstName, required this.lastName, required this.userName });
 
