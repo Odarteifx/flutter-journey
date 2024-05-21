@@ -17,7 +17,7 @@ class _TaskaddpageState extends State<Taskaddpage> {
               content: Container(
                 height: 500,
                 width: 700,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Column(
                   //crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -81,10 +81,39 @@ class _TaskaddpageState extends State<Taskaddpage> {
                             ),
                           )
                         ],
-                      )
+                      ),
+                      const SizedBox(height: 30,),
+                      Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          taskButton(
+                            'Save',
+                            () {
+                              print('Saved');
+                            },
+                            Colors.green
+                             ),
+                             taskButton(
+                        'Cancel',
+                        () {
+                          return Navigator.pop(context);
+                        },
+                        Colors.red
+                         ),
+                        ],
+                      ),
                   ],
                 ),
               ),
              );
   }
+}
+
+Widget taskButton(String action, VoidCallback actionButton, Color btnColor){
+  return MaterialButton(
+    minWidth: 140,
+    onPressed: actionButton,
+    color: btnColor,
+    child: Text(action),
+  );
 }
