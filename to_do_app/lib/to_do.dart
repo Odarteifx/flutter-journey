@@ -15,6 +15,12 @@ final String userName;
   State<MyToDoInterface> createState() => _MyToDoInterfaceState();
 }
 
+List toDoList = [
+  ['Develop A flutter project with flutter',const Color(0xFFFFF6E3), true],
+  ['Design Ui For A Movie Application',const Color(0xFFE4E2DC), false],
+  ['Zoom Meeting With Supervisor',const Color(0xFFD0D0B6), false],
+  ['Develop A flutter project',const Color(0xFFFFD7C7), false],
+];
 
 class _MyToDoInterfaceState extends State<MyToDoInterface> {
   String selectedDate = 'All';
@@ -130,10 +136,19 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                  padding: const EdgeInsets.symmetric(horizontal: 20),
                  child: Column(
                   children: [
-                    taskSection('Develop A flutter project with flutter',const Color(0xFFFFF6E3), true),
-                    taskSection('Design Ui For A Movie Application',const Color(0xFFE4E2DC), false),
-                    taskSection('Zoom Meeting With Supervisor',const Color(0xFFD0D0B6), false),
-                     taskSection('Develop A flutter project',const Color(0xFFFFD7C7), false),
+                  
+                   ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return taskSection(
+                        toDoList[index][0], 
+                        toDoList[index][1],
+                        toDoList[index][2],
+                        );
+                    },
+                    itemCount: toDoList.length,
+                    )
                   ],
                  ),
                )
@@ -204,7 +219,7 @@ Widget taskScrollBtns(
 
 Widget taskSection(String task, Color taskColor, bool taskStatus,){
   return Padding(
-    padding: const EdgeInsets.only(bottom: 11),
+    padding: const EdgeInsets.only(bottom: 15),
     child: Container( 
       width: double.infinity,
       height: 170,

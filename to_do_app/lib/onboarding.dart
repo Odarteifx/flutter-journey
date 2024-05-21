@@ -30,8 +30,16 @@ class _OnboardingWidState extends State<OnboardingWid> {
                   
                    Column(
                      children: [
-                      Text('STAY ORGANIZED', 
+                      Text(
+                        'STAY ORGANIZED', 
                      style: GoogleFonts.poppins(
+                      shadows: [
+                        const Shadow(
+                          color: Color(0x3E000000),
+                          offset: Offset(0, 4),
+                          blurRadius: 4,
+                        )
+                      ],
                     fontSize: 35, 
                     fontWeight: FontWeight.w800,
                     ),

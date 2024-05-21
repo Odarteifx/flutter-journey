@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:to_do_app/to_do.dart';
 
-final _formkey = GlobalKey<FormState>();
+final _formkey = GlobalKey<FormState>(); 
+
 class RegPage extends StatefulWidget {
   const RegPage({super.key});
 
@@ -48,6 +49,7 @@ class _ToDoUIState extends State<RegPage> {
                 ),
               ),
                const SizedBox(height: 60,),
+
               Form(
                 key: _formkey ,
                 child: Column(
@@ -73,6 +75,7 @@ class _ToDoUIState extends State<RegPage> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
+                          
                         ),
                         const SizedBox(height: 20,),
                 
@@ -138,6 +141,7 @@ class _ToDoUIState extends State<RegPage> {
                    backgroundColor: Colors.black,
                   ),
                   onPressed:() {
+                    _formkey.currentState!.validate();
                     Navigator.push(context, MaterialPageRoute(builder:(context) {
                       return MyToDoInterface(firstName: _firstNameController.text, lastName: _lastNameController.text, userName: _userNameController.text,);
                   }
