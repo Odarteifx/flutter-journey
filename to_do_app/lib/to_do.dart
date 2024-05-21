@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:to_do_app/add_add_page.dart';
-import 'package:to_do_app/register.dart';
 
 
 class MyToDoInterface extends StatefulWidget {
@@ -20,6 +19,7 @@ final String userName;
 
 class _MyToDoInterfaceState extends State<MyToDoInterface> {
   String selectedDate = 'All';
+  
 
   void buttonPressed(String day){
   setState(() {
@@ -54,7 +54,7 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
                           ),
                       ),
                         Text(
-                        'Hi, ${userNameController.text}',
+                         'Hi, ${widget.userName}',
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
