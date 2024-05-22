@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 
 class Taskaddpage extends StatefulWidget {
@@ -18,6 +19,8 @@ class _TaskaddpageState extends State<Taskaddpage> {
 final taskController = TextEditingController();
 final dateController = TextEditingController();
 DateTime? selectedDate;
+Color colorSelected = Colors.white;
+bool taskStatus = false;
 
 
   @override
@@ -28,15 +31,17 @@ DateTime? selectedDate;
                 width: 700,
                 decoration: const BoxDecoration(),
                 child: Column(
-                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Add a new task',
-                      style: GoogleFonts.poppins(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      ),
+                    Center(
+                      child: Text(
+                        'Add a new task',
+                        style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        ),
+                    ),
                       const SizedBox( height: 10,),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,6 +94,36 @@ DateTime? selectedDate;
                           )
                         ],
                       ),
+                      const SizedBox(height: 10,),
+                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Color',
+                            style: GoogleFonts.poppins(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            ),
+                            const SizedBox(height: 5,),
+                            GestureDetector(
+                              onTap: () {
+                                 _pickColor(context);
+                              },
+                              child: Container(
+                                height: 50,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: colorSelected,
+                                  border: Border.all(
+                                    color: Colors.grey
+                                    ),
+                                  borderRadius: BorderRadius.circular(4)
+                                ),
+                              ),
+                            )
+                        ],
+                      ),
                       const SizedBox(height: 30,),
                       Row(
                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,7 +134,7 @@ DateTime? selectedDate;
                               if (taskController.text.isNotEmpty && selectedDate != null){
                                 Navigator.pop(
                                   context,
-                                  [taskController.text, selectedDate, const Color(0xFFE0E0E0), false]
+                                  [taskController.text, selectedDate, colorSelected, taskStatus]
                                   );
                               } else {
                                
@@ -122,7 +157,7 @@ DateTime? selectedDate;
              );
   }
 
-   Future<void> _selectDate(BuildContext context) async {
+   void _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -136,7 +171,42 @@ DateTime? selectedDate;
       });
     }
   }
+
+void _pickColor(BuildContext context) async {
+  showDialog(
+    context: context, 
+  builder: (context) {
+    return AlertDialog(
+      title: const Text(
+        'Pick a color',
+        ),
+      content: SingleChildScrollView(
+        child: BlockPicker(
+          pickerColor: colorSelected, 
+          onColorChanged: (Color color){
+            setState(() {
+              colorSelected = color;
+            });
+          }
+          ),
+      ),
+      actions: [
+        ElevatedButton(
+           child:const Text('Select'),
+           onPressed: (){
+            Navigator.pop(context);
+           },
+           )
+      ],
+    );
+  },
+  );
 }
+}
+
+
+
+
 
 Widget taskButton(String action, VoidCallback actionButton, Color btnColor){
   return MaterialButton(
