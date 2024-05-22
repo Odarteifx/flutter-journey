@@ -97,7 +97,10 @@ DateTime? selectedDate;
                             'Save',
                             () {
                               if (taskController.text.isNotEmpty && selectedDate != null){
-                                Navigator.pop(context);
+                                Navigator.pop(
+                                  context,
+                                  [taskController.text, selectedDate, const Color(0xFFE0E0E0), false]
+                                  );
                               } else {
                                
                               }

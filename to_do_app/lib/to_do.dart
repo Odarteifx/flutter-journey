@@ -17,10 +17,10 @@ final String userName;
 }
 
 List toDoList = [
-  ['Develop A flutter project with flutter',DateTime(2024,02,02),const Color(0xFFFFF6E3), true],
-  ['Design Ui For A Movie Application',DateTime(2024,02,02),const Color(0xFFE4E2DC), false],
-  ['Zoom Meeting With Supervisor',DateTime(2024,02,02),const Color(0xFFD0D0B6), false],
-  ['Develop A flutter project',DateTime(2024,02,02),const Color(0xFFFFD7C7), false],
+  //['Develop A flutter project with flutter',DateTime(2024,02,02),const Color(0xFFFFF6E3), true],
+  //['Design Ui For A Movie Application',DateTime(2024,02,02),const Color(0xFFE4E2DC), false],
+  //['Zoom Meeting With Supervisor',DateTime(2024,02,02),const Color(0xFFD0D0B6), false],
+  //['Develop A flutter project',DateTime(2024,02,02),const Color(0xFFFFD7C7), false],
 ];
 
 class _MyToDoInterfaceState extends State<MyToDoInterface> {
@@ -34,15 +34,18 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
 }
  int currentPageIndex = 0;
 
-void createNewTask(){
-  showDialog(
+void createNewTask()async{
+  final newTask = await showDialog(
     context: context,
      builder: (context) {
-       return const Taskaddpage(
-        
-       );
+       return const Taskaddpage();
      },
      );
+     if (newTask != null){
+      setState(() {
+        toDoList.add(newTask);
+      });
+     }
 }
 
   @override
@@ -171,6 +174,7 @@ void createNewTask(){
           ),
         ),
       ),
+
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Colors.black,
         onPressed: createNewTask, 
@@ -222,7 +226,12 @@ Widget taskScrollBtns(
   );
 }
 
-Widget taskSection(String task, DateTime taskDate ,Color taskColor, bool taskStatus,){
+Widget taskSection(
+  String task, 
+  DateTime taskDate,
+  Color taskColor, 
+  bool taskStatus
+  ){
   return Padding(
     padding: const EdgeInsets.only(bottom: 15),
     child: Container( 
@@ -282,7 +291,7 @@ Widget taskSection(String task, DateTime taskDate ,Color taskColor, bool taskSta
                   ),
                   child:  Center(
                     child: Text(
-                      '15th May',
+                      '${taskDate.day} ${_getMonthName(taskDate.month)}',
                       style: GoogleFonts.poppins(
                         color:  const Color(0xFF4F4F4F),
                         fontWeight: FontWeight.w600,
@@ -309,4 +318,12 @@ Widget taskSection(String task, DateTime taskDate ,Color taskColor, bool taskSta
       ),
   );
 
+}
+
+String _getMonthName(int month){
+  const monthNames = [
+    'Jan', 'Feb','Mar','Apr', 'May',
+    'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
+  return monthNames[month - 1];
 }
