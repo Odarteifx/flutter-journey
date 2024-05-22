@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-
+final taskController = TextEditingController();
 class Taskaddpage extends StatefulWidget {
-  const Taskaddpage({super.key});
+
+  const Taskaddpage({super.key,});
 
   @override
   State<Taskaddpage> createState() => _TaskaddpageState();
@@ -111,6 +112,7 @@ class _TaskaddpageState extends State<Taskaddpage> {
 
 Widget taskButton(String action, VoidCallback actionButton, Color btnColor){
   return MaterialButton(
+    height: 40,
     minWidth: 140,
     onPressed: actionButton,
     color: btnColor,
