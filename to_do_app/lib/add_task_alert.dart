@@ -2,16 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-final taskController = TextEditingController();
+
 class Taskaddpage extends StatefulWidget {
 
-  const Taskaddpage({super.key,});
+  const Taskaddpage({super.key});
+
+  
 
   @override
   State<Taskaddpage> createState() => _TaskaddpageState();
 }
 
 class _TaskaddpageState extends State<Taskaddpage> {
+
+final taskController = TextEditingController();
+final dateController = TextEditingController();
+DateTime? selectedDate;
+
+
   @override
   Widget build(BuildContext context) {
     return  AlertDialog(
@@ -42,6 +50,7 @@ class _TaskaddpageState extends State<Taskaddpage> {
                             ),
                             const SizedBox(height: 5,),
                           TextFormField(
+                            controller: taskController,
                             decoration: const InputDecoration(
                               hintText: 'Enter your task',
                               border: OutlineInputBorder(),
@@ -62,17 +71,14 @@ class _TaskaddpageState extends State<Taskaddpage> {
                             ),
                             const SizedBox(height: 5,),
                           TextFormField(
+                            controller: dateController,
+                            readOnly: true,
                             decoration: InputDecoration(
                               hintText: 'Select date',
                               border: const OutlineInputBorder(),
                               suffixIcon: IconButton(
                                 onPressed:() {
-                                  showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime.now(),
-                                    lastDate: DateTime(2100),
-                                    );
+                                  _selectDate(context);
                                 },
                                  icon: const Icon(
                                   Iconsax.calendar_1,
@@ -90,7 +96,11 @@ class _TaskaddpageState extends State<Taskaddpage> {
                           taskButton(
                             'Save',
                             () {
-                              print('Saved');
+                              if (taskController.text.isNotEmpty && selectedDate != null){
+                                Navigator.pop(context);
+                              } else {
+                               
+                              }
                             },
                             Colors.green
                              ),
@@ -108,6 +118,21 @@ class _TaskaddpageState extends State<Taskaddpage> {
               ),
              );
   }
+
+   Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        dateController.text = "${picked.day}/${picked.month}/${picked.year}";
+      });
+    }
+  }
 }
 
 Widget taskButton(String action, VoidCallback actionButton, Color btnColor){
@@ -116,6 +141,19 @@ Widget taskButton(String action, VoidCallback actionButton, Color btnColor){
     minWidth: 140,
     onPressed: actionButton,
     color: btnColor,
-    child: Text(action),
+    child: Text(
+      action,
+      style: GoogleFonts.poppins(
+        fontSize: 15,
+        fontWeight: FontWeight.w500,
+        color: Colors.white,
+      ),
+    ),
   );
 }
+
+
+
+ 
+
+
