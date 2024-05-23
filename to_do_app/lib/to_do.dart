@@ -50,6 +50,8 @@ void createNewTask()async{
 
   @override
   Widget build(BuildContext context) {
+    var selectedSort = 0;
+
     return  Scaffold(
       extendBody: true,
       body:  SingleChildScrollView(
@@ -118,20 +120,47 @@ void createNewTask()async{
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                          
-                      Text(
-                        'See All',
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: const Color(0xFFC5C5C5),
+
+                     //Sort menu    
+                     PopupMenuButton(
+                      icon: const Icon(
+                        Iconsax.sort,
                         ),
+                      initialValue: selectedSort,
+                      itemBuilder: (context) {
+                        return [
+                           PopupMenuItem(
+                          child: Text(
+                            'See all tasks',
+                            style: GoogleFonts.poppins(
+                              fontSize: 15,
+                            ),
+                            ),
+                          ),
+                          PopupMenuItem(
+                          child: Text(
+                            'Completed',
+                            style: GoogleFonts.poppins(
+                              fontSize: 15,
+                            ),
+                            ),
+                          ),
+                          PopupMenuItem(
+                          child: Text(
+                            'Not Completed',
+                            style: GoogleFonts.poppins(
+                              fontSize: 15,
+                            ),
+                            ),
+                          ),
+                          ] ;
+                      },
                       )
                     ],
                   ),
                 ),
             
-                const SizedBox(height: 26),
+                const SizedBox(height: 25),
             
                  SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
