@@ -48,15 +48,6 @@ void createNewTask()async{
      }
 }
 
-void statusButton(){
-  showDialog(
-    context: context,
-  builder: (context) {
-    return AlertDialog();
-  },
-  );
-}
-
   @override
   Widget build(BuildContext context) {
     var selectedSort = 0;
@@ -294,6 +285,7 @@ Widget taskSection(
       decoration: BoxDecoration(
         color: taskColor,
         borderRadius: BorderRadius.circular(30),
+        
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal:18),
@@ -314,7 +306,7 @@ Widget taskSection(
                 ),
                   GestureDetector(
                     onTap: () {
-                      
+
                     },
                     child: Container(
                       width: 60,
@@ -346,7 +338,6 @@ Widget taskSection(
                       color: const Color(0xFF4F4F4F),
                     ),
                     borderRadius: BorderRadius.circular(50),
-                    
                   ),
                   child:  Center(
                     child: Text(
