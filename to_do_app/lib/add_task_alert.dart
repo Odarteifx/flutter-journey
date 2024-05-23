@@ -27,7 +27,7 @@ bool taskStatus = false;
   Widget build(BuildContext context) {
     return  AlertDialog(
               content: Container(
-                height: 500,
+                height: 450,
                 width: 700,
                 decoration: const BoxDecoration(),
                 child: Column(
@@ -42,7 +42,7 @@ bool taskStatus = false;
                         ),
                         ),
                     ),
-                      const SizedBox( height: 10,),
+                      const SizedBox( height: 20,),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -63,7 +63,7 @@ bool taskStatus = false;
                           )
                         ],
                       ),
-                      const SizedBox( height: 10,),
+                      const SizedBox( height: 20,),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -94,7 +94,7 @@ bool taskStatus = false;
                           )
                         ],
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(height: 20,),
                        Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -124,7 +124,7 @@ bool taskStatus = false;
                             )
                         ],
                       ),
-                      const SizedBox(height: 30,),
+                      const SizedBox(height: 40,),
                       Row(
                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -147,10 +147,11 @@ bool taskStatus = false;
                         () {
                           return Navigator.pop(context);
                         },
-                        Colors.red
+                        Colors.red,
                          ),
                         ],
                       ),
+                   
                   ],
                 ),
               ),
@@ -201,7 +202,11 @@ void _pickColor(BuildContext context) async {
              Color(0xFF04FF71),
              Color(0xFFFFAA6A),
              Color(0xFFA1DCFF),
-             Color(0xFFE2E4F6)
+             Color(0xFFE2E4F6),
+             Color(0xFFFFBA08),
+             Color(0xFFFFB4B4),
+             Color(0xFF79FBEA),
+             Color.fromRGBO(216, 226, 146, 1)
           ],
           onColorChanged: (Color color){
             setState(() {
