@@ -19,7 +19,7 @@ class _TaskaddpageState extends State<Taskaddpage> {
 final taskController = TextEditingController();
 final dateController = TextEditingController();
 DateTime? selectedDate;
-Color colorSelected = Colors.white;
+Color colorSelected = const Color(0xFFFFF6E3);
 bool taskStatus = false;
 
 
@@ -177,12 +177,32 @@ void _pickColor(BuildContext context) async {
     context: context, 
   builder: (context) {
     return AlertDialog(
-      title: const Text(
-        'Pick a color',
-        ),
+      title: Center(
+        child: Text(
+          'Pick a color',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.bold,
+            
+          ),
+          ),
+      ),
       content: SingleChildScrollView(
         child: BlockPicker(
-          pickerColor: colorSelected, 
+          pickerColor: colorSelected,
+          availableColors: const [
+             Color(0xFFFFF6E3),
+             Color(0xFFE4E2DC),
+             Color(0xFFD0D0B6),
+             Color(0xFFFFD7C7),
+             Color(0xFFDFB1B3),
+             Color(0xFF9CD5A0),
+             Color(0xFFB2AEF3),
+             Color(0xFF76F5AD),
+             Color(0xFF04FF71),
+             Color(0xFFFFAA6A),
+             Color(0xFFA1DCFF),
+             Color(0xFFE2E4F6)
+          ],
           onColorChanged: (Color color){
             setState(() {
               colorSelected = color;
@@ -192,7 +212,16 @@ void _pickColor(BuildContext context) async {
       ),
       actions: [
         ElevatedButton(
-           child:const Text('Select'),
+          style: const ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(Colors.black)
+            ),
+           child:const Text(
+            'Select',
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+            ),
+            ),
            onPressed: (){
             Navigator.pop(context);
            },

@@ -153,6 +153,22 @@ void createNewTask()async{
                  child: Column(
                   children: [
                   
+                   toDoList.isEmpty? 
+                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                     children: [
+                      const SizedBox(height: 200,),
+                        Center
+                       (child:  Text(
+                        'No Task Available',
+                        style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          color: Colors.grey,
+                        ),
+                        ),
+                       ),
+                     ],
+                   ) : 
                    ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
