@@ -53,7 +53,7 @@ void createNewTask()async{
  List<String> generateDates() {
     List<String> dateList = ['All'];
     DateTime today = DateTime.now();
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 5; i++) {
       DateTime date = today.add(Duration(days: i));
       String dateString = (date == today)? 'Today' : "${date.day} ${_getMonthName(date.month)}";
       dateList.add(dateString);
