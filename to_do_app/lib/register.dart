@@ -143,7 +143,11 @@ class _ToDoUIState extends State<RegPage> {
                   onPressed:() {
                     _formkey.currentState!.validate();
                     Navigator.push(context, MaterialPageRoute(builder:(context) {
-                      return MyToDoInterface(firstName: _firstNameController.text, lastName: _lastNameController.text, userName: _userNameController.text,);
+                      return MyToDoInterface(
+                        firstName: _firstNameController.text, 
+                        lastName: _lastNameController.text, 
+                        userName: _userNameController.text,
+                        );
                   }
                   ));
                   }, 
