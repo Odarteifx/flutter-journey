@@ -16,14 +16,16 @@ final String userName;
   State<MyToDoInterface> createState() => _MyToDoInterfaceState();
 }
 
-List toDoList = [
+
+
+class _MyToDoInterfaceState extends State<MyToDoInterface> {
+  List toDoList = [
   //['Develop A flutter project with flutter',DateTime(2024,02,02),const Color(0xFFFFF6E3), true],
   //['Design Ui For A Movie Application',DateTime(2024,02,02),const Color(0xFFE4E2DC), false],
   //['Zoom Meeting With Supervisor',DateTime(2024,02,02),const Color(0xFFD0D0B6), false],
   //['Develop A flutter project',DateTime(2024,02,02),const Color(0xFFFFD7C7), false],
 ];
 
-class _MyToDoInterfaceState extends State<MyToDoInterface> {
   String selectedDate = 'All';
   
 
@@ -47,6 +49,17 @@ void createNewTask()async{
       });
      }
 }
+
+ List<String> generateDates() {
+    List<String> dateList = ['All'];
+    DateTime today = DateTime.now();
+    for (int i = 0; i < 7; i++) {
+      DateTime date = today.add(Duration(days: i));
+      String dateString = "${date.day} ${_getMonthName(date.month)}";
+      dateList.add(dateString);
+    }
+    return dateList;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -162,19 +175,18 @@ void createNewTask()async{
             
                 const SizedBox(height: 25),
             
-                 SingleChildScrollView(
+                  SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
                       const SizedBox(width: 15,),
-                      taskScrollBtns('All', buttonPressed , selectedDate),
-                      taskScrollBtns('Today', buttonPressed, selectedDate),
-                      taskScrollBtns('16th May', buttonPressed, selectedDate),
-                      taskScrollBtns('17th May', buttonPressed, selectedDate),
-                      taskScrollBtns('18th May', buttonPressed, selectedDate),
-                    ],
+                      ...generateDates().map((date) {
+                      return taskScrollBtns(date, buttonPressed, selectedDate);
+                    }),
+                    ]
                   ),
                 ),
+                
                 const SizedBox(height: 22,),
             
                Padding(
@@ -242,7 +254,9 @@ void createNewTask()async{
 
 
 Widget taskScrollBtns(
-  String day, void Function(String) buttonPressed, String selectedDate
+  String day, 
+  void Function(String) buttonPressed, 
+  String selectedDate
 ){
   bool isSelected = day == selectedDate;
   return Padding(
