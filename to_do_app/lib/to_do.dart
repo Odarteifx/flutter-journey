@@ -214,12 +214,35 @@ void createNewTask()async{
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return taskSection(
-                        toDoList[index][0], 
-                        toDoList[index][1],
-                        toDoList[index][2],
-                        toDoList[index][3],
-                        );
+                      return  Dismissible(
+                        key: Key( toDoList[index][0]),
+                        child: taskSection(
+                            toDoList[index][0], 
+                            toDoList[index][1],
+                            toDoList[index][2],
+                            toDoList[index][3],
+                            ),
+                            onDismissed: (direction) {
+                              setState(() {
+                                 toDoList.removeAt(index);
+                              });
+
+                              ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+                                 SnackBar(
+                                  content: Center(
+                                    child: Text(
+                                      'Task has been deleted',
+                                      style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15
+                                      ),
+                                      ),
+                                  ),
+                                  )
+                                );
+                            },
+                      );
+                      
                     },
                     itemCount: toDoList.length,
                     )
