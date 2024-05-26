@@ -217,6 +217,7 @@ void createNewTask()async{
                       return  Dismissible(
                         key: Key( toDoList[index][0]),
                         child: taskSection(
+                            context,
                             toDoList[index][0], 
                             toDoList[index][1],
                             toDoList[index][2],
@@ -309,6 +310,7 @@ Widget taskScrollBtns(
 }
 
 Widget taskSection(
+  BuildContext context,
   String task, 
   DateTime taskDate,
   Color taskColor, 
@@ -343,6 +345,47 @@ Widget taskSection(
                 ),
                   GestureDetector(
                     onTap: () {
+                      showDialog(
+                        context: context, 
+                        builder: (context) {
+                         return AlertDialog(
+                          title: Center(
+                            child: Text(
+                              'Task status',
+                              style:  GoogleFonts.poppins(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              )
+                              ),
+                          ),
+                          content: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              statusButton(
+                              'Completed',
+                              (){
+                                (){ 
+                                    taskStatus == true;
+                                };
+                                Navigator.pop(context);
+                              },
+                              Colors.green
+
+                            ),
+                            const SizedBox(width: 10,),
+                            statusButton(
+                              'Not Completed',
+                              (){
+                              Navigator.pop(context); 
+                              },
+                              Colors.red
+
+                            ),
+                            ],
+                          ),
+                          );
+                        },
+                        );
 
                     },
                     child: Container(
@@ -406,6 +449,24 @@ Widget taskSection(
   );
 
 }
+
+Widget statusButton(String action, VoidCallback onPressed, Color btnColor) {
+  return MaterialButton(
+    minWidth: 140,
+    onPressed: onPressed,
+    color: btnColor,
+    child: Text(
+      action,
+      style:  GoogleFonts.poppins(
+        color: Colors.white,
+        fontSize: 15,
+        fontWeight: FontWeight.w500
+      )
+      ),
+  );
+}
+
+
 
 String _getMonthName(int month){
   const monthNames = [
