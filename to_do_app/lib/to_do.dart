@@ -28,6 +28,11 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
 
   String selectedDate = 'All';
   
+  void stabtn(int index){
+    setState(() {
+       toDoList[index][3] = true;
+    });
+  }
 
   void buttonPressed(String day){
   setState(() {
@@ -358,15 +363,12 @@ Widget taskSection(
                               )
                               ),
                           ),
-                          content: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              statusButton(
+                          actions: [
+                            Row(
+                              children: [
+                                statusButton(
                               'Completed',
                               (){
-                                (){ 
-                                    taskStatus == true;
-                                };
                                 Navigator.pop(context);
                               },
                               Colors.green
@@ -379,10 +381,11 @@ Widget taskSection(
                               Navigator.pop(context); 
                               },
                               Colors.red
-
                             ),
+                              ],
+                            )
                             ],
-                          ),
+                          
                           );
                         },
                         );
