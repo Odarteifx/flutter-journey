@@ -28,12 +28,13 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
 
   String selectedDate = 'All';
   int selectedSort = 0;
-  
-  void stabtn(int index, bool status){
+
+   void updateTaskStatus(int index, bool status) {
     setState(() {
-       toDoList[index][3] = true;
+      toDoList[index][3] = status;
     });
   }
+
 
   void buttonPressed(String day){
   setState(() {
@@ -69,6 +70,7 @@ void createNewTask()async{
 
   @override
   Widget build(BuildContext context) {
+    
    
     return  Scaffold(
       extendBody: true,
@@ -235,6 +237,8 @@ void createNewTask()async{
                             toDoList[index][1],
                             toDoList[index][2],
                             toDoList[index][3],
+                            index,
+                             updateTaskStatus,
                             ),
                             onDismissed: (direction) {
                               setState(() {
@@ -328,6 +332,8 @@ Widget taskSection(
   DateTime taskDate,
   Color taskColor, 
   bool taskStatus,
+  int index,
+  void Function(int, bool) updateTaskStatus,
   ){
   return Padding(
     padding: const EdgeInsets.only(bottom: 15),
@@ -377,6 +383,7 @@ Widget taskSection(
                                 statusButton(
                               'Completed',
                               (){
+                                 updateTaskStatus(index, true);
                                 Navigator.pop(context);
                               },
                               Colors.green
@@ -386,6 +393,7 @@ Widget taskSection(
                             statusButton(
                               'Not Completed',
                               (){
+                              updateTaskStatus(index, false);
                               Navigator.pop(context); 
                               },
                               Colors.red
@@ -460,6 +468,8 @@ Widget taskSection(
   );
 
 }
+
+ 
 
 Widget statusButton(String action, VoidCallback onPressed, Color btnColor) {
   return MaterialButton(
