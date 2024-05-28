@@ -27,8 +27,9 @@ class _MyToDoInterfaceState extends State<MyToDoInterface> {
 ];
 
   String selectedDate = 'All';
+  int selectedSort = 0;
   
-  void stabtn(int index){
+  void stabtn(int index, bool status){
     setState(() {
        toDoList[index][3] = true;
     });
@@ -68,8 +69,7 @@ void createNewTask()async{
 
   @override
   Widget build(BuildContext context) {
-    var selectedSort = 0;
-
+   
     return  Scaffold(
       extendBody: true,
       body:  SingleChildScrollView(
@@ -145,9 +145,15 @@ void createNewTask()async{
                         Iconsax.sort,
                         ),
                       initialValue: selectedSort,
+                      onSelected: (value) {
+                        setState(() {
+                          selectedSort = value;
+                        });
+                      },
                       itemBuilder: (context) {
                         return [
                            PopupMenuItem(
+                            value: 0,
                           child: Text(
                             'See all tasks',
                             style: GoogleFonts.poppins(
@@ -156,6 +162,7 @@ void createNewTask()async{
                             ),
                           ),
                           PopupMenuItem(
+                            value: 1,
                           child: Text(
                             'Completed',
                             style: GoogleFonts.poppins(
@@ -164,6 +171,7 @@ void createNewTask()async{
                             ),
                           ),
                           PopupMenuItem(
+                            value: 2,
                           child: Text(
                             'Not Completed',
                             style: GoogleFonts.poppins(
