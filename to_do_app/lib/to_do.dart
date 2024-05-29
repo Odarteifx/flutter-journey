@@ -68,10 +68,20 @@ void createNewTask()async{
     return dateList;
   }
 
+  List getFilteredTaskList(){
+    //Completed
+    if (selectedSort == 1){
+      return toDoList.where((task) => task[3] == true).toList();
+    } else if(selectedSort == 2){
+      //Not Completed
+      return toDoList.where((task) => task[3] == false).toList();
+    }
+    return toDoList;
+  }
+
   @override
   Widget build(BuildContext context) {
-    
-   
+     List filteredTaskList = getFilteredTaskList();
     return  Scaffold(
       extendBody: true,
       body:  SingleChildScrollView(
@@ -209,7 +219,7 @@ void createNewTask()async{
                  child: Column(
                   children: [
                   
-                   toDoList.isEmpty? 
+                   filteredTaskList.isEmpty? 
                    Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                      children: [
@@ -230,19 +240,19 @@ void createNewTask()async{
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return  Dismissible(
-                        key: Key( toDoList[index][0]),
+                        key: Key( filteredTaskList[index][0]),
                         child: taskSection(
                             context,
-                            toDoList[index][0], 
-                            toDoList[index][1],
-                            toDoList[index][2],
-                            toDoList[index][3],
+                            filteredTaskList[index][0], 
+                            filteredTaskList[index][1],
+                            filteredTaskList[index][2],
+                            filteredTaskList[index][3],
                             index,
                              updateTaskStatus,
                             ),
                             onDismissed: (direction) {
                               setState(() {
-                                 toDoList.removeAt(index);
+                                 toDoList.removeAt(filteredTaskList[index]);
                               });
 
                               ScaffoldMessenger.maybeOf(context)?.showSnackBar(
@@ -262,7 +272,7 @@ void createNewTask()async{
                       );
                       
                     },
-                    itemCount: toDoList.length,
+                    itemCount: filteredTaskList.length,
                     )
                   ],
                  ),
