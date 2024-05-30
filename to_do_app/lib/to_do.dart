@@ -252,7 +252,7 @@ void createNewTask()async{
                             ),
                             onDismissed: (direction) {
                               setState(() {
-                                 toDoList.removeAt(filteredTaskList[index]);
+                                 toDoList.removeAt(toDoList.indexOf(filteredTaskList[index]));
                               });
 
                               ScaffoldMessenger.maybeOf(context)?.showSnackBar(
