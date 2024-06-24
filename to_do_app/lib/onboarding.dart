@@ -47,7 +47,7 @@ class _OnboardingWidState extends State<OnboardingWid> {
                     Text(
                     'Manage your tasks easily and effectively', 
                     style: GoogleFonts.poppins(
-                      fontSize: 18, 
+                      fontSize: 17, 
                       fontWeight: FontWeight.w300
                       ),
                       ),
