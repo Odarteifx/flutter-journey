@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/onboarding.dart';
 import 'package:google_fonts/google_fonts.dart';
-// ignore: unused_import
-import 'package:iconsax/iconsax.dart';
 
 void main() {
   runApp(const MyApp());

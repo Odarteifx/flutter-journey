@@ -245,7 +245,7 @@ void _pickColor(BuildContext context) async {
 Widget taskButton(String action, VoidCallback actionButton, Color btnColor){
   return MaterialButton(
     height: 40,
-    minWidth: 140,
+    minWidth: 120,
     onPressed: actionButton,
     color: btnColor,
     child: Text(
