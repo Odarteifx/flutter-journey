@@ -375,6 +375,7 @@ Widget taskSection(
                   GestureDetector(
                     onTap: () {
                       showDialog(
+                       
                         context: context, 
                         builder: (context) {
                          return AlertDialog(
@@ -483,7 +484,6 @@ Widget taskSection(
 
 Widget statusButton(String action, VoidCallback onPressed, Color btnColor) {
   return MaterialButton(
-    minWidth: 140,
     onPressed: onPressed,
     color: btnColor,
     child: Text(
