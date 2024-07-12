@@ -45,6 +45,7 @@ class _SettingsState extends State<Settings> {
             ElevatedButton(
               onPressed: () {
                 context.read<UserProvider>().changeUserName(newUserName: _controller.text);
+                FocusManager.instance.primaryFocus?.unfocus();
                 _controller.clear();
               }, 
               child: const Text('Save'),
