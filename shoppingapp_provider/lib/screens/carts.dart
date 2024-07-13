@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shoppingapp_provider/models/data.dart';
 import 'package:shoppingapp_provider/provider/cart_provider.dart';
 
 class MyCart extends StatelessWidget {
@@ -19,9 +20,14 @@ class MyCart extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height * 0.80,
                   child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: provider.cartItems.length,
                     itemBuilder: (context, index) {
                       return ListTile(
+                        onLongPress: () {
+                          provider.cartItems.remove(products[index]);
+                        },
                         tileColor:
                             Theme.of(context).colorScheme.onInverseSurface,
                         leading: Text(

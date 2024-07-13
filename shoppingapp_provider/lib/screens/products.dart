@@ -4,7 +4,6 @@ import 'package:shoppingapp_provider/models/data.dart';
 import 'package:shoppingapp_provider/models/models.dart';
 import 'package:shoppingapp_provider/provider/cart_provider.dart';
 import 'package:shoppingapp_provider/screens/carts.dart';
-import 'package:shoppingapp_provider/widgets/product_tile.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({super.key});
