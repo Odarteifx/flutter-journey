@@ -26,7 +26,7 @@ class MyCart extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return ListTile(
                         onLongPress: () {
-                          provider.cartItems.remove(products[index]);
+                          provider.removeProduct(products[index]);
                         },
                         tileColor:
                             Theme.of(context).colorScheme.onInverseSurface,
