@@ -10,6 +10,15 @@ class MyCart extends StatelessWidget {
         title: const Text('My Cart'),
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              
+            )
+          ],
+        ),
+      ),
     );
   }
 }
