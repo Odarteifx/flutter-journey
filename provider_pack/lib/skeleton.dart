@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider_pack/calculate.dart';
 import 'package:provider_pack/homepage.dart';
 import 'package:provider_pack/settings.dart';
 
@@ -24,11 +25,12 @@ class _SkeletonViewState extends State<SkeletonView> {
             },
             destinations: const <Widget>[
               NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-              NavigationDestination(
-                  icon: Icon(Icons.settings), label: 'Settings')
+              NavigationDestination(icon: Icon(Icons.calculate), label: 'Math'),
+              NavigationDestination(icon: Icon(Icons.settings), label: 'Settings'),
             ]),
         body: <Widget>[
           const Homepage(),
+          const Calculate(),
           const Settings(),
         ][selectedIndex]);
   }

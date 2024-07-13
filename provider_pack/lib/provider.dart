@@ -14,3 +14,20 @@ void changeUserName({required String newUserName}) async{
 }
 
 
+class CounterProvider extends ChangeNotifier {
+int num;
+CounterProvider({
+this.num = 0,
+});
+  
+  void numIncrement() async {
+    num ++;
+    notifyListeners();
+  }
+
+  void numDecrement() async{
+    num --;
+    notifyListeners();
+  }
+}
+
