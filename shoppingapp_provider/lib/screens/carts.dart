@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shoppingapp_provider/provider/cart_provider.dart';
 
 class MyCart extends StatelessWidget {
   const MyCart({super.key});
@@ -10,15 +12,35 @@ class MyCart extends StatelessWidget {
         title: const Text('My Cart'),
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       ),
-      body: SingleChildScrollView(
-        child: Column(
+      body: Consumer<CartProvider>(builder: (context, provider, _) {
+        return Column(
           children: [
-            Container(
-              
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height *0.80,
+              child: ListView.builder(
+                itemCount: provider.cartItems.length,
+                itemBuilder: (context, index) {
+                return ListTile(
+                  tileColor: Theme.of(context).colorScheme.onInverseSurface,
+                  leading: Text(
+                    provider.cartItems[index].name,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  trailing: Text(
+                    '\$${provider.cartItems[index].price.toString()}',
+                    style: TextStyle(
+                      fontSize: 15
+                    ),
+                    ),
+                );
+              },),
             )
           ],
-        ),
-      ),
+        );
+      },)
     );
   }
 }
