@@ -8,39 +8,60 @@ class MyCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Cart'),
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-      ),
-      body: Consumer<CartProvider>(builder: (context, provider, _) {
-        return Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.sizeOf(context).height *0.80,
-              child: ListView.builder(
-                itemCount: provider.cartItems.length,
-                itemBuilder: (context, index) {
-                return ListTile(
-                  tileColor: Theme.of(context).colorScheme.onInverseSurface,
-                  leading: Text(
-                    provider.cartItems[index].name,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold
-                    ),
+        appBar: AppBar(
+          title: Text('My Cart (${Provider.of<CartProvider>(context).cartItems.length})'),
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        ),
+        body: Consumer<CartProvider>(
+          builder: (context, provider, _) {
+            return Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).height * 0.80,
+                  child: ListView.builder(
+                    itemCount: provider.cartItems.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        tileColor:
+                            Theme.of(context).colorScheme.onInverseSurface,
+                        leading: Text(
+                          provider.cartItems[index].name,
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        trailing: Text(
+                          '\$${provider.cartItems[index].price.toString()}',
+                          style: const TextStyle(fontSize: 15),
+                        ),
+                      );
+                    },
                   ),
-                  trailing: Text(
-                    '\$${provider.cartItems[index].price.toString()}',
-                    style: TextStyle(
-                      fontSize: 15
-                    ),
-                    ),
-                );
-              },),
-            )
-          ],
-        );
-      },)
-    );
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Total:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20
+                        ),
+                        ),
+                      Text(
+                        '\$${provider.getCartTotal().toString()}',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20
+                        ),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
+        ));
   }
 }
