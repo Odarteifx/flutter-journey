@@ -10,8 +10,14 @@ class MyCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('My Cart (${Provider.of<CartProvider>(context).cartItems.length})'),
+          title: Text(
+              'My Cart (${Provider.of<CartProvider>(context).cartItems.length})'),
           backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+          actions: [
+            IconButton(
+                onPressed: () => Provider.of<CartProvider>(context, listen: false).removeAll(),
+                icon: const Icon(Icons.clear_all))
+          ],
         ),
         body: Consumer<CartProvider>(
           builder: (context, provider, _) {
@@ -51,17 +57,13 @@ class MyCart extends StatelessWidget {
                       const Text(
                         'Total:',
                         style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20
-                        ),
-                        ),
+                            fontWeight: FontWeight.w500, fontSize: 20),
+                      ),
                       Text(
                         '\$${provider.getCartTotal().toString()}',
                         style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20
-                        ),
-                        ),
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
                     ],
                   ),
                 ),
