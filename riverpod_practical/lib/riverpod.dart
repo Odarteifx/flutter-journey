@@ -6,6 +6,6 @@ final riverpodEasyLevel = StateProvider<int>((ref){
 });
 
 
-final riverpodHardLevel = ChangeNotifierProvider((ref){
+final riverpodHardLevel = ChangeNotifierProvider<Riverpodmodel>((ref){
   return Riverpodmodel (counter: 0);
 });
