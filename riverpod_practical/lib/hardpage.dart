@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_practical/riverpod.dart';
 
-class Homepage extends ConsumerWidget {
-  const Homepage({super.key});
+class HardPage extends ConsumerWidget {
+  const HardPage({super.key});
 
   @override
   build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RiverPod Demo'),
+        title: const Text('RiverPod Demo 2'),
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       ),
       body: Center(
@@ -17,7 +17,7 @@ class Homepage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              ref.watch(riverpodEasyLevel).toString(),
+              ref.watch(riverpodHardLevel).counter.toString(),
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -25,14 +25,14 @@ class Homepage extends ConsumerWidget {
             ),
             ElevatedButton.icon(
               onPressed: () {
-                ref.read(riverpodEasyLevel.notifier).state++;
+                ref.read(riverpodHardLevel).counterAdd();
               },
               icon: const Icon(Icons.add),
               label: const Text('Add'),
             ),
             ElevatedButton.icon(
                 onPressed: () {
-                  ref.read(riverpodEasyLevel.notifier).state++;
+                  ref.read(riverpodHardLevel).counterRemove();
                 },
                 icon: const Icon(Icons.remove),
                 label: const Text('Remove'))
