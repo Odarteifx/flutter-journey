@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "815991626377",
+    "project_id": "awesome-project-wow",
+    "storage_bucket": "awesome-project-wow.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815991626377:android:a921ccc68abe9246bd8458",
+        "android_client_info": {
+          "package_name": "com.awesomep"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS4sDr-NwF79r22zd7QNnZWoo8-MS0MsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
