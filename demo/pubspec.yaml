@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_core: ^3.3.0
   google_fonts: ^6.2.1
+  flutter_screenutil: ^5.9.3
+  heroicons: ^0.10.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +66,9 @@ flutter:
   assets:
    - assets/Onboarding.gif
    - assets/Onboarding-cuate.png
+   - assets/apple-logo.png
+   - assets/facebook.png
+   - assets/google.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

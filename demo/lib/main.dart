@@ -3,8 +3,9 @@ import 'package:demo/screens/onboarding.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Future <void> main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -17,14 +18,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme.apply(bodyColor: Colors.black, displayColor: Colors.black))
+    return ScreenUtilInit(
+      builder: (context, child) => MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.amberAccent),
+            useMaterial3: true,
+            textTheme: GoogleFonts.latoTextTheme(Theme.of(context)
+                .textTheme
+                .apply(bodyColor: Colors.black, displayColor: Colors.black))),
+        home: const MyHomePage(),
       ),
-      home: const MyHomePage(),
+      designSize: const Size(390, 844),
     );
   }
 }
