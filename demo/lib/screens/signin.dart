@@ -132,7 +132,7 @@ class _SignInPageState extends State<SignInPage> {
                       BoxShadow(
                         color: Colors.black,
                         offset:
-                            _pressed ? const Offset(0, 0) :  Offset(4.h, 4.w),
+                            _pressed ? const Offset(0, 0) : Offset(4.h, 4.w),
                         spreadRadius: 1,
                       )
                     ]),
@@ -150,7 +150,7 @@ class _SignInPageState extends State<SignInPage> {
                         },
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.amber,
-                            padding:  EdgeInsets.symmetric(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 20.h, vertical: 15.w),
                             shape: const ContinuousRectangleBorder(
                                 side: BorderSide(color: Colors.black))),
@@ -199,7 +199,7 @@ class _SignInPageState extends State<SignInPage> {
                         height: 48.h,
                         child: TextButton(
                             style: TextButton.styleFrom(
-                              padding:  EdgeInsets.symmetric(
+                              padding: EdgeInsets.symmetric(
                                   horizontal: 35.w, vertical: 10.h),
                               side: const BorderSide(color: Color(0xFFD8D8D8)),
                             ),
@@ -222,14 +222,22 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 Center(
                   child: Wrap(
-                    children: [Text('Don\'t have an accout? ', style: TextStyle(fontSize: 15.sp),),
-                    
-                     InkWell(
-                      onTap: (){},
-                       child: Text('Register',
-                       style: TextStyle(fontSize: 15.sp, color: Colors.amber, fontWeight: FontWeight.w600),),
-                     )],
-                  
+                    children: [
+                      Text(
+                        'Don\'t have an accout? ',
+                        style: TextStyle(fontSize: 15.sp),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Text(
+                          'Register',
+                          style: TextStyle(
+                              fontSize: 15.sp,
+                              color: Colors.amber,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      )
+                    ],
                   ),
                 )
               ],
