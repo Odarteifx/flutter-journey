@@ -48,12 +48,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         TextSpan(
                             text: '</Vision',
                             style: GoogleFonts.oswald(
-                              color: Colors.amber,
+                                color: Colors.amber,
                                 fontWeight: FontWeight.bold,
                                 fontSize: screenWidth * 0.05)),
                         TextSpan(
                             text: 'Duck>',
-                            style: GoogleFonts.oswald(fontSize: screenWidth * 0.05))
+                            style: GoogleFonts.oswald(
+                                fontSize: screenWidth * 0.05))
                       ])),
                       SizedBox(
                         height: screenHeight * 0.02,
@@ -100,9 +101,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                                     pressed = false;
                                   });
                                 });
-                               Future.delayed(const Duration(seconds: 1), (){
-                                 Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage(),));
-                               });
+                                Future.delayed(const Duration(seconds: 1), () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SignInPage(),
+                                      ));
+                                });
                               },
                               onHover: (value) {
                                 TextButton.styleFrom(
@@ -132,9 +138,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         width: double.infinity,
                         child: TextButton(
                             onPressed: () {
-                              Future.delayed(const Duration(seconds: 1), (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpPage(),));
-                              } );
+                              Future.delayed(const Duration(seconds: 1), () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const SignUpPage(),
+                                    ));
+                              });
                             },
                             style: TextButton.styleFrom(
                               // backgroundColor: Colors.amberAccent,

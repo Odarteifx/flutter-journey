@@ -75,7 +75,7 @@ class _SignInPageState extends State<SignInPage> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                       filled: true,
-                      hintText: 'Enter your email',
+                      hintText: 'Enter your Email',
                       border: OutlineInputBorder()),
                 ),
                 SizedBox(
@@ -94,7 +94,7 @@ class _SignInPageState extends State<SignInPage> {
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                       filled: true,
-                      hintText: 'Enter password',
+                      hintText: 'Enter Password',
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -150,6 +150,7 @@ class _SignInPageState extends State<SignInPage> {
                         },
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.amber,
+                             foregroundColor: Colors.white,
                             padding: EdgeInsets.symmetric(
                                 horizontal: 20.h, vertical: 15.w),
                             shape: const ContinuousRectangleBorder(
