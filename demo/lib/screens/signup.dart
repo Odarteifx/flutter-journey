@@ -54,7 +54,7 @@ class _SignUpPageState extends State<SignUpPage> {
               style: TextStyle(fontSize: 14.sp, color: Colors.grey),
             ),
             SizedBox(
-              height: 20.h,
+              height: 30.h,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,7 +168,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ],
             ),
             SizedBox(
-                  height: 20.h,
+                  height: 30.h,
                 ),
             Row(
               children: [
@@ -190,10 +190,11 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: Text(
                           'VisionDuck Agreements',
                           style: TextStyle(
-                            
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.amber,
                               fontSize: 14.sp,
                               color: Colors.amber,
-                              fontWeight: FontWeight.w600),
+                              ),
                         ),
                       )
                     ],

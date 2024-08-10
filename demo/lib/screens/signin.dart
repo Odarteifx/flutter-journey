@@ -226,14 +226,14 @@ class _SignInPageState extends State<SignInPage> {
                     children: [
                       Text(
                         'Don\'t have an accout? ',
-                        style: TextStyle(fontSize: 15.sp),
+                        style: TextStyle(fontSize: 14.sp),
                       ),
                       InkWell(
                         onTap: () {},
                         child: Text(
                           'Register',
                           style: TextStyle(
-                              fontSize: 15.sp,
+                              fontSize: 14.sp,
                               color: Colors.amber,
                               fontWeight: FontWeight.w600),
                         ),
