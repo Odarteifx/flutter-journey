@@ -1,3 +1,4 @@
+import 'package:demo/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -150,7 +151,7 @@ class _SignInPageState extends State<SignInPage> {
                         },
                         style: TextButton.styleFrom(
                             backgroundColor: Colors.amber,
-                             foregroundColor: Colors.white,
+                            foregroundColor: Colors.white,
                             padding: EdgeInsets.symmetric(
                                 horizontal: 20.h, vertical: 15.w),
                             shape: const ContinuousRectangleBorder(
@@ -229,7 +230,15 @@ class _SignInPageState extends State<SignInPage> {
                         style: TextStyle(fontSize: 14.sp),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Future.delayed(const Duration(milliseconds: 400), () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignUpPage(),
+                                ));
+                          });
+                        },
                         child: Text(
                           'Register',
                           style: TextStyle(

@@ -59,7 +59,6 @@ class _SignUpPageState extends State<SignUpPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 TextField(
                   controller: _usernameController,
                   keyboardType: TextInputType.name,
@@ -71,7 +70,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(
                   height: 20.h,
                 ),
-                
                 TextField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -83,7 +81,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(
                   height: 20.h,
                 ),
-                
                 TextField(
                   obscureText: _hidePassword,
                   controller: _passwordController,
@@ -106,7 +103,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(
                   height: 20.h,
                 ),
-                
                 TextField(
                   obscureText: _hidePassword1,
                   controller: _passwordController1,
@@ -128,6 +124,41 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 SizedBox(
                   height: 20.h,
+                ),
+                Row(
+              children: [
+                Checkbox(value: _agreed, onChanged: (value) {
+                  setState(() {
+                    _agreed = !_agreed;
+                  });
+                },),
+                Flexible(
+                  child: Wrap(
+                    alignment: WrapAlignment.start,
+                    children: [
+                      Text(
+                        'I acknowledge that I have read and agree to ',
+                        style: TextStyle(fontSize: 14.sp),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Text(
+                          'VisionDuck Agreements',
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.amber,
+                              fontSize: 14.sp,
+                              color: Colors.amber,
+                              ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+                  height: 30.h,
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -167,42 +198,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ],
             ),
-            SizedBox(
-                  height: 30.h,
-                ),
-            Row(
-              children: [
-                Checkbox(value: _agreed, onChanged: (value) {
-                  setState(() {
-                    _agreed = !_agreed;
-                  });
-                },),
-                Flexible(
-                  child: Wrap(
-                    alignment: WrapAlignment.start,
-                    children: [
-                      Text(
-                        'I acknowledge that I have read and agree to ',
-                        style: TextStyle(fontSize: 14.sp),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Text(
-                          'VisionDuck Agreements',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            decorationColor: Colors.amber,
-                              fontSize: 14.sp,
-                              color: Colors.amber,
-                              ),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            )
-
           ],
         ),
       ),
