@@ -192,8 +192,8 @@ class _SignInPageState extends State<SignInPage> {
                         child: TextButton(
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 35.h, vertical: 10.w),
-                              side: const BorderSide(color: Color(0xFFD8D8D8)),
+                                  horizontal: 0.h, vertical: 8.w),
+                             // side: const BorderSide(color: Color(0xFFD8D8D8)),
                             ),
                             onPressed: () {},
                             child: Image.asset('assets/facebook.png'))),
@@ -202,8 +202,8 @@ class _SignInPageState extends State<SignInPage> {
                         child: TextButton(
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 35.w, vertical: 10.h),
-                              side: const BorderSide(color: Color(0xFFD8D8D8)),
+                                  horizontal: 0.w, vertical: 10.h),
+                            //  side: const BorderSide(color: Color(0xFFD8D8D8)),
                             ),
                             onPressed: () {},
                             child: Image.asset('assets/google.png'))),
@@ -212,8 +212,8 @@ class _SignInPageState extends State<SignInPage> {
                         child: TextButton(
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 35.h, vertical: 10.w),
-                              side: const BorderSide(color: Color(0xFFD8D8D8)),
+                                  horizontal: 0.h, vertical: 10.w),
+                              //side: const BorderSide(color: Color(0xFFD8D8D8)),
                             ),
                             onPressed: () {},
                             child: Image.asset('assets/apple-logo.png'))),
