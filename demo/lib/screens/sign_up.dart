@@ -19,15 +19,20 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordController1 = TextEditingController();
-  bool _hidePassword = false;
-  bool _hidePassword1 = false;
+  bool _hidePassword = true;
+  bool _hidePassword1 = true;
   bool _pressed = false;
   bool _agreed = false;
 
   final _formkey = GlobalKey<FormState>();
 
   registration() async {
-    if ((password == confirmpassword) && (password != null && _usernameController != null && _emailController != null && _passwordController != null && _passwordController1 != null)) {
+    if ((password == confirmpassword) &&
+        (password != null &&
+            _usernameController != null &&
+            _emailController != null &&
+            _passwordController != null &&
+            _passwordController1 != null)) {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
@@ -44,18 +49,18 @@ class _SignUpPageState extends State<SignUpPage> {
       } on FirebaseAuthException catch (e) {
         if (e.code == 'Weak Password') {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
+              backgroundColor: Colors.orangeAccent,
               content: Text(
-            'Password Provided is too Weak',
-            style: TextStyle(fontSize: 20),
-          )));
-        } else if (e.code == 'mail-already-in-use'){
-         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
+                'Password Provided is too Weak',
+                style: TextStyle(fontSize: 20),
+              )));
+        } else if (e.code == 'mail-already-in-use') {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              backgroundColor: Colors.orangeAccent,
               content: Text(
-            'Acount already exists',
-            style: TextStyle(fontSize: 20),
-          ))); 
+                'Acount already exists',
+                style: TextStyle(fontSize: 20),
+              )));
         }
       }
     }
@@ -143,7 +148,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                       return null;
                     },
-                    obscureText: _hidePassword,
+                    obscureText: _hidePassword1,
                     controller: _passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
@@ -152,10 +157,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
-                              _hidePassword = !_hidePassword;
+                              _hidePassword1 = !_hidePassword1;
                             });
                           },
-                          icon: _hidePassword
+                          icon: _hidePassword1
                               ? const HeroIcon(HeroIcons.eye)
                               : const HeroIcon(HeroIcons.eyeSlash),
                         ),
@@ -242,18 +247,30 @@ class _SignUpPageState extends State<SignUpPage> {
                         )
                       ]),
                       child: TextButton(
-                          onPressed: () {
-                            setState(() {
-                              _pressed = !_pressed;
-                            });
+                          onPressed: _agreed
+                              ? () {
+                                  setState(() {
+                                    _pressed = !_pressed;
+                                  });
+                                  Future.delayed(
+                                      const Duration(milliseconds: 400), () {
+                                    setState(() {
+                                      _pressed = !_pressed;
+                                    });
+                                  });
 
-                            Future.delayed(const Duration(milliseconds: 400),
-                                () {
-                              setState(() {
-                                _pressed = !_pressed;
-                              });
-                            });
-                          },
+                                  if (_formkey.currentState!.validate()) {
+                                    setState(() {
+                                      name = _usernameController.text.trim();
+                                      email = _emailController.text.trim();
+                                      password = _passwordController.text.trim();
+                                      confirmpassword =
+                                          _passwordController1.text.trim();
+                                    });
+                                  }
+                                  registration();
+                                }
+                              : null,
                           style: TextButton.styleFrom(
                               backgroundColor: Colors.amber,
                               foregroundColor: Colors.white,

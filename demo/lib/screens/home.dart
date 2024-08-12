@@ -10,6 +10,8 @@ class AppHome extends StatefulWidget {
 class _AppHomeState extends State<AppHome> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      
+    );
   }
 }
