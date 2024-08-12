@@ -47,14 +47,14 @@ class _SignUpPageState extends State<SignUpPage> {
               builder: (context) => const AppHome(),
             ));
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'Weak Password') {
+        if (e.code == 'weak-password') {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              backgroundColor: Colors.orangeAccent,
+              backgroundColor: Color(0xFFBFB8A5),
               content: Text(
                 'Password Provided is too Weak',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 15),
               )));
-        } else if (e.code == 'mail-already-in-use') {
+        } else if (e.code == 'email-already-in-use') {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               backgroundColor: Colors.orangeAccent,
               content: Text(

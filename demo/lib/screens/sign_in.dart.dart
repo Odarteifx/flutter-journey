@@ -24,8 +24,10 @@ class _SignInPageState extends State<SignInPage> {
 
   userLogin() async {
     try {
+      print('Email: $email, Password: $password');
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+
       Navigator.push(
           context,
           MaterialPageRoute(
