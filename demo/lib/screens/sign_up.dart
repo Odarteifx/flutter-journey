@@ -19,7 +19,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordController1 = TextEditingController();
-  bool _hidePassword = true;
+  
   bool _hidePassword1 = true;
   bool _pressed = false;
   bool _agreed = false;
@@ -56,10 +56,10 @@ class _SignUpPageState extends State<SignUpPage> {
               )));
         } else if (e.code == 'email-already-in-use') {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              backgroundColor: Colors.orangeAccent,
+              backgroundColor: Color(0xFFBFB8A5),
               content: Text(
                 'Acount already exists',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 15),
               )));
         }
       }

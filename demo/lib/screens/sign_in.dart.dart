@@ -1,3 +1,4 @@
+import 'package:demo/screens/forgot_password.dart';
 import 'package:demo/screens/home.dart';
 import 'package:demo/screens/sign_up.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -36,13 +37,34 @@ class _SignInPageState extends State<SignInPage> {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          backgroundColor: Colors.orangeAccent,
-          content: Text('Account does not Exist'),
+          backgroundColor: Color(0xFFBFB8A5),
+          content: Text(
+            'Account does not Exist',
+            style: TextStyle(fontSize: 15),
+          ),
         ));
       } else if (e.code == 'wrong-password') {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          backgroundColor: Colors.orangeAccent,
-          content: Text('Incorrect Password'),
+            backgroundColor: Color(0xFFBFB8A5),
+            content: Text(
+              'Invalid Email',
+              style: TextStyle(fontSize: 15),
+            )));
+      } else if (e.code == 'invalid-email') {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            backgroundColor: Color(0xFFBFB8A5),
+            content: Text(
+              'Invalid Email',
+              style: TextStyle(fontSize: 15),
+            )));
+      } else {
+        print(e.code);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.redAccent,
+          content: Text(
+            'Error: ${e.message}',
+            style: TextStyle(fontSize: 15),
+          ),
         ));
       }
     }
@@ -158,7 +180,9 @@ class _SignInPageState extends State<SignInPage> {
                       TextButton(
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.grey),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgotPassword(),));
+                          },
                           child: Text(
                             'Forgot password?',
                             style: TextStyle(
