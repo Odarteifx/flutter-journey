@@ -38,12 +38,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             'No User found for that Email',
             style: TextStyle(fontSize: 15),
           )));
-        } else
+        } else {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
             '${e.message}',
             style: const TextStyle(fontSize: 15),
           )));
+        }
       }
     }
   }
