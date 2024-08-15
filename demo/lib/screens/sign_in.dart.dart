@@ -1,3 +1,4 @@
+import 'package:demo/screens/auth.dart';
 import 'package:demo/screens/forgot_password.dart';
 import 'package:demo/screens/home.dart';
 import 'package:demo/screens/sign_up.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
+
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -25,7 +27,6 @@ class _SignInPageState extends State<SignInPage> {
 
   userLogin() async {
     try {
-      print('Email: $email, Password: $password');
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
 
@@ -58,12 +59,11 @@ class _SignInPageState extends State<SignInPage> {
               style: TextStyle(fontSize: 15),
             )));
       } else {
-        print(e.code);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Colors.redAccent,
           content: Text(
             'Error: ${e.message}',
-            style: TextStyle(fontSize: 15),
+            style: const TextStyle(fontSize: 15),
           ),
         ));
       }
@@ -181,7 +181,11 @@ class _SignInPageState extends State<SignInPage> {
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.grey),
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgotPassword(),));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ForgotPassword(),
+                                ));
                           },
                           child: Text(
                             'Forgot password?',
@@ -279,7 +283,7 @@ class _SignInPageState extends State<SignInPage> {
                                     horizontal: 0.w, vertical: 10.h),
                                 //  side: const BorderSide(color: Color(0xFFD8D8D8)),
                               ),
-                              onPressed: () {},
+                              onPressed: () { AuthMethods().signInWithGoogle(context);},
                               child: Image.asset('assets/google.png'))),
                       SizedBox(
                           height: 48.h,

@@ -1,15 +1,17 @@
-import 'package:demo/screens/sign_up.dart';
+import 'package:demo/screens/database.dart';
+import 'package:demo/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class AuthMethod {
+class AuthMethods{
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   getCurrentUser() async {
     return await auth.currentUser;
   }
 
-  signInWithGoogle() async {
+  signInWithGoogle(BuildContext context) async {
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount? googleSignInAccount =
@@ -32,6 +34,9 @@ class AuthMethod {
         'imgUrl':userDetails.photoURL,
         'id' : userDetails.uid
       };
+      await DatabaseMethods().addUser(userDetails.uid, userInfoMap).then((value){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => AppHome(),));
+      });
     }
   }
 }
