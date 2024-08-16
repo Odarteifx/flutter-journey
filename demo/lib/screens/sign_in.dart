@@ -8,7 +8,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
-
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
@@ -283,7 +282,9 @@ class _SignInPageState extends State<SignInPage> {
                                     horizontal: 0.w, vertical: 10.h),
                                 //  side: const BorderSide(color: Color(0xFFD8D8D8)),
                               ),
-                              onPressed: () { AuthMethods().signInWithGoogle(context);},
+                              onPressed: () {
+                                AuthMethods().signInWithGoogle(context);
+                              },
                               child: Image.asset('assets/google.png'))),
                       SizedBox(
                           height: 48.h,
